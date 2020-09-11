@@ -16,7 +16,9 @@ return [
     'default_timezone' => 'Asia/Shanghai',
 
     // 应用映射（自动多应用模式有效）
-    'app_map'          => ['think' => 'admin'],
+    'app_map'          => ['think' => function($app) {
+        $app->http->path('path/to/composer/app');
+    },],
     // 域名绑定（自动多应用模式有效）
     'domain_bind'      => [],
     // 禁止URL访问的应用列表（自动多应用模式有效）
@@ -29,4 +31,6 @@ return [
     'error_message'    => '页面错误！请稍后再试～',
     // 显示错误信息
     'show_error_msg'   => true,
+
+    'auto_multi_app'   => true,
 ];

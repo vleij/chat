@@ -36,7 +36,7 @@ class Route
      * @var array
      */
     protected $rest = [
-        'index'  => ['get', '', 'index'],
+        'admin'  => ['get', '', 'admin'],
         'create' => ['get', '/create', 'create'],
         'edit'   => ['get', '/<id>/edit', 'edit'],
         'read'   => ['get', '/<id>', 'read'],
@@ -77,7 +77,7 @@ class Route
         // 默认控制器名
         'default_controller'    => 'Index',
         // 默认操作名
-        'default_action'        => 'index',
+        'default_action'        => 'admin',
         // 操作方法后缀
         'action_suffix'         => '',
         // 非路由变量是否使用普通参数方式（用于URL生成）

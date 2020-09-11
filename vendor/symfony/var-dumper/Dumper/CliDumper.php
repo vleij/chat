@@ -39,7 +39,7 @@ class CliDumper extends AbstractDumper
         'private' => '',
         'meta' => '38;5;170',
         'key' => '38;5;113',
-        'index' => '38;5;38',
+        'admin' => '38;5;38',
     ];
 
     protected static $controlCharsRx = '/[\x00-\x1F\x7F]+/';
@@ -79,7 +79,7 @@ class CliDumper extends AbstractDumper
                 'ref' => '1;30',
                 'meta' => '35',
                 'key' => '32',
-                'index' => '34',
+                'admin' => '34',
             ]);
         }
 
@@ -359,7 +359,7 @@ class CliDumper extends AbstractDumper
                     if (self::DUMP_LIGHT_ARRAY & $this->flags) {
                         break;
                     }
-                    $style = 'index';
+                    $style = 'admin';
                     // no break
                 case Cursor::HASH_ASSOC:
                     if (\is_int($key)) {

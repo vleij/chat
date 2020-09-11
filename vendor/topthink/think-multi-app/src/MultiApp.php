@@ -89,9 +89,9 @@ class MultiApp
     protected function parseMultiApp(): bool
     {
         $scriptName = $this->getScriptName();
-        $defaultApp = $this->app->config->get('app.default_app') ?: 'index';
+        $defaultApp = $this->app->config->get('app.default_app') ?: 'admin';
 
-        if ($this->name || ($scriptName && !in_array($scriptName, ['index', 'router', 'think']))) {
+        if ($this->name || ($scriptName && !in_array($scriptName, ['admin', 'router', 'think']))) {
             $appName = $this->name ?: $scriptName;
             $this->app->http->setBind();
         } else {

@@ -209,7 +209,7 @@ class RouteTest extends TestCase
     public function testUrlDispatch()
     {
         $controller = m::mock(FooClass::class);
-        $controller->shouldReceive('index')->andReturn('bar');
+        $controller->shouldReceive('admin')->andReturn('bar');
 
         $this->app->shouldReceive('parseClass')->once()->with('controller', 'Foo')->andReturn($controller->mockery_getName());
         $this->app->shouldReceive('make')->with($controller->mockery_getName(), [], true)->andReturn($controller);
@@ -233,14 +233,14 @@ class RouteTest extends TestCase
 
     public function testViewDispatch()
     {
-        $this->route->view('foo', 'index/hello', ['city' => 'shanghai']);
+        $this->route->view('foo', 'admin/hello', ['city' => 'shanghai']);
 
         $request  = $this->makeRequest('foo');
         $response = $this->route->dispatch($request);
 
         $this->assertInstanceOf(View::class, $response);
         $this->assertEquals(['city' => 'shanghai'], $response->getVars());
-        $this->assertEquals('index/hello', $response->getData());
+        $this->assertEquals('admin/hello', $response->getData());
     }
 
     public function testResponseDispatch()
