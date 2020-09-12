@@ -13,34 +13,34 @@ class Menu extends Model
 {
     protected $name = 'admin_menu';
 
-    public function menuList($menu,$id=0,$level=0){
-
-        static $menus = array();
-        foreach ($menu as $value) {
-            if ($value['pid']==$id) {
-                $value['level'] = $level+1;
-                if($level == 0)
-                {
-                    $value['str'] = str_repeat('',$value['level']);
-                }
-                elseif($level == 2)
-                {
-                    $value['str'] = '&emsp;&emsp;&emsp;&emsp;'.'└ ';
-                }
-                elseif($level == 3)
-                {
-                    $value['str'] = '&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'.'└ ';
-                }
-                else
-                {
-                    $value['str'] = '&emsp;&emsp;'.'└ ';
-                }
-                $menus[] = $value;
-                $this->menulist($menu,$value['id'],$value['level']);
-            }
-        }
-        return $menus;
-    }
+//    public function menuList($menu,$id=0,$level=0){
+//
+//        static $menus = array();
+//        foreach ($menu as $value) {
+//            if ($value['pid']==$id) {
+//                $value['level'] = $level+1;
+//                if($level == 0)
+//                {
+//                    $value['str'] = str_repeat('',$value['level']);
+//                }
+//                elseif($level == 2)
+//                {
+//                    $value['str'] = '&emsp;&emsp;&emsp;&emsp;'.'└ ';
+//                }
+//                elseif($level == 3)
+//                {
+//                    $value['str'] = '&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;'.'└ ';
+//                }
+//                else
+//                {
+//                    $value['str'] = '&emsp;&emsp;'.'└ ';
+//                }
+//                $menus[] = $value;
+//                $this->menulist($menu,$value['id'],$value['level']);
+//            }
+//        }
+//        return $menus;
+//    }
 
     /*菜单列表*/
     public function  menu_list(){
@@ -102,5 +102,21 @@ class Menu extends Model
         }
 
         return $menus;
+    }
+
+    public function menuList(object $menu, int $id=0){
+
+        $data = array();
+        foreach ($menu as $k=>$v){        //PID符合条件的
+            if($v['pid'] == $id){            //寻找子集
+
+                $child = $this->menuList($menu,$v['id']);            //加入数组
+
+                $v['child'] = $child?:array();
+                $data[] = $v;//加入数组中
+            }
+        }
+        return $data;
+
     }
 }

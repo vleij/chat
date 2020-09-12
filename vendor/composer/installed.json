@@ -141,6 +141,56 @@
         "description": "An adapter decorator to enable meta-data caching."
     },
     {
+        "name": "liliuwei/thinkphp-auth",
+        "version": "v2.0.0",
+        "version_normalized": "2.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/liliuwei/thinkphp-auth.git",
+            "reference": "1eddf9fe6c549c11f1b3a212aaaf7a50165412c9"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/liliuwei/thinkphp-auth/zipball/1eddf9fe6c549c11f1b3a212aaaf7a50165412c9",
+            "reference": "1eddf9fe6c549c11f1b3a212aaaf7a50165412c9",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=7.1.0",
+            "topthink/framework": "^6.0"
+        },
+        "time": "2019-12-04T14:17:14+00:00",
+        "type": "think-extend",
+        "extra": {
+            "think": {
+                "config": {
+                    "auth": "src/config/auth.php"
+                }
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-4": {
+                "liliuwei\\think\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "liliuwei",
+                "email": "974829947@qq.com"
+            }
+        ],
+        "description": "适用于thinkphp6.0的Auth权限扩展",
+        "keywords": [
+            "think-auth",
+            "thinkphp"
+        ]
+    },
+    {
         "name": "opis/closure",
         "version": "3.5.7",
         "version_normalized": "3.5.7.0",

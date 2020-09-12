@@ -17,8 +17,8 @@ class Home extends BaseController
 {
     public function index(){
         $menu = new MenuModel();
-        $list = $menu->menu_list()->toArray();
-        $menu_list = $menu->menusList($list);
+        $list = $menu->menu_list();
+        $menu_list = $menu->menuList($list);
 
         View::assign([
             'menu'  => $menu_list,
