@@ -24,5 +24,6 @@ class Menus extends BaseController
     {
         $menu = new MenuModel();
         $list = $menu->select();
+        return $list;
     }
 }

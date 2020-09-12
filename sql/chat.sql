@@ -1195,7 +1195,7 @@ CREATE TABLE `c_admin_menu` (
 -- Records of c_admin_menu
 -- ----------------------------
 INSERT INTO `c_admin_menu` VALUES ('1', '系统管理', 'admin', 'home', '', null, null, '1', '1', '0', '1', '1', null, '0', '0');
-INSERT INTO `c_admin_menu` VALUES ('2', '菜单管理', 'admin', 'menu', 'index', null, null, '1', '1', '1', '1', '1', null, '0', '0');
+INSERT INTO `c_admin_menu` VALUES ('2', '菜单管理', 'admin', 'menus', 'index', null, null, '1', '1', '1', '1', '1', null, '0', '0');
 
 -- ----------------------------
 -- Table structure for c_auth_group

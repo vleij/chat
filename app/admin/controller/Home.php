@@ -21,7 +21,7 @@ class Home extends BaseController
         $menu_list = $menu->menuList($list);
 
         View::assign([
-            'menu'  => $menu_list,
+            'menus'  => $menu_list,
         ]);
         return View::fetch();
     }

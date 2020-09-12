@@ -13,10 +13,10 @@ class Menu extends Model
 {
     protected $name = 'admin_menu';
 
-//    public function menuList($menu,$id=0,$level=0){
+//    public function menuList($menus,$id=0,$level=0){
 //
 //        static $menus = array();
-//        foreach ($menu as $value) {
+//        foreach ($menus as $value) {
 //            if ($value['pid']==$id) {
 //                $value['level'] = $level+1;
 //                if($level == 0)
@@ -36,7 +36,7 @@ class Menu extends Model
 //                    $value['str'] = '&emsp;&emsp;'.'└ ';
 //                }
 //                $menus[] = $value;
-//                $this->menulist($menu,$value['id'],$value['level']);
+//                $this->menulist($menus,$value['id'],$value['level']);
 //            }
 //        }
 //        return $menus;

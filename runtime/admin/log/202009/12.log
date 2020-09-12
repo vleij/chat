@@ -1,0 +1,215 @@
+[2020-09-12T14:36:38+08:00][sql] CONNECT:[ UseTime:0.003192s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T14:36:38+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.000804s ]
+[2020-09-12T14:36:38+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000540s ]
+[2020-09-12T14:36:38+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000607s ]
+[2020-09-12T14:36:38+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000728s ]
+[2020-09-12T14:39:17+08:00][sql] CONNECT:[ UseTime:0.000774s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T14:39:17+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.000865s ]
+[2020-09-12T14:39:17+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000419s ]
+[2020-09-12T14:39:17+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000567s ]
+[2020-09-12T14:39:17+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000249s ]
+[2020-09-12T14:39:23+08:00][sql] CONNECT:[ UseTime:0.000780s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T14:39:23+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.000867s ]
+[2020-09-12T14:39:23+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000331s ]
+[2020-09-12T14:39:23+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000524s ]
+[2020-09-12T14:39:23+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000232s ]
+[2020-09-12T14:39:36+08:00][sql] CONNECT:[ UseTime:0.010411s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T14:39:36+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.000953s ]
+[2020-09-12T14:39:36+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.004820s ]
+[2020-09-12T14:39:36+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000703s ]
+[2020-09-12T14:39:36+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000208s ]
+[2020-09-12T14:39:42+08:00][sql] CONNECT:[ UseTime:0.009990s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T14:39:42+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001407s ]
+[2020-09-12T14:39:42+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000299s ]
+[2020-09-12T14:39:42+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000681s ]
+[2020-09-12T14:39:42+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000237s ]
+[2020-09-12T14:39:46+08:00][sql] CONNECT:[ UseTime:0.002274s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T14:39:46+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.000619s ]
+[2020-09-12T14:39:46+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000338s ]
+[2020-09-12T14:39:46+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000513s ]
+[2020-09-12T14:39:46+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000214s ]
+[2020-09-12T14:39:54+08:00][sql] CONNECT:[ UseTime:0.001098s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T14:39:54+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001010s ]
+[2020-09-12T14:39:54+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000349s ]
+[2020-09-12T14:39:54+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000441s ]
+[2020-09-12T14:39:54+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000222s ]
+[2020-09-12T16:15:36+08:00][sql] CONNECT:[ UseTime:0.002015s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T16:15:36+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.004588s ]
+[2020-09-12T16:15:36+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.004835s ]
+[2020-09-12T16:15:36+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001841s ]
+[2020-09-12T16:15:36+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.001765s ]
+[2020-09-12T16:15:39+08:00][sql] CONNECT:[ UseTime:0.000698s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T16:15:39+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.002186s ]
+[2020-09-12T16:15:39+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001424s ]
+[2020-09-12T16:15:39+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001646s ]
+[2020-09-12T16:15:39+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000992s ]
+[2020-09-12T16:15:49+08:00][sql] CONNECT:[ UseTime:0.010686s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T16:15:49+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003205s ]
+[2020-09-12T16:15:49+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001920s ]
+[2020-09-12T16:15:49+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001714s ]
+[2020-09-12T16:15:49+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.001324s ]
+[2020-09-12T16:59:11+08:00][sql] CONNECT:[ UseTime:0.003831s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T16:59:11+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.006289s ]
+[2020-09-12T16:59:11+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001927s ]
+[2020-09-12T16:59:11+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001632s ]
+[2020-09-12T16:59:11+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000621s ]
+[2020-09-12T16:59:37+08:00][sql] CONNECT:[ UseTime:0.000741s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T16:59:37+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003368s ]
+[2020-09-12T16:59:37+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.002068s ]
+[2020-09-12T16:59:37+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001993s ]
+[2020-09-12T16:59:37+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.001441s ]
+[2020-09-12T17:00:32+08:00][sql] CONNECT:[ UseTime:0.011162s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T17:00:32+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003030s ]
+[2020-09-12T17:00:32+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.002553s ]
+[2020-09-12T17:00:32+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001098s ]
+[2020-09-12T17:00:32+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000591s ]
+[2020-09-12T17:01:05+08:00][sql] CONNECT:[ UseTime:0.001303s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T17:01:05+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.005038s ]
+[2020-09-12T17:01:05+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000776s ]
+[2020-09-12T17:01:05+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001127s ]
+[2020-09-12T17:01:05+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000238s ]
+[2020-09-12T17:02:07+08:00][sql] CONNECT:[ UseTime:0.001100s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T17:02:07+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.007785s ]
+[2020-09-12T17:02:07+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001749s ]
+[2020-09-12T17:02:07+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.003053s ]
+[2020-09-12T17:02:07+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000383s ]
+[2020-09-12T18:48:06+08:00][sql] CONNECT:[ UseTime:0.004314s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:48:06+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003755s ]
+[2020-09-12T18:48:06+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000976s ]
+[2020-09-12T18:48:06+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000735s ]
+[2020-09-12T18:48:06+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.001117s ]
+[2020-09-12T18:49:15+08:00][sql] CONNECT:[ UseTime:0.001513s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:49:15+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003827s ]
+[2020-09-12T18:49:15+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001401s ]
+[2020-09-12T18:49:15+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001250s ]
+[2020-09-12T18:49:15+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000240s ]
+[2020-09-12T18:54:13+08:00][sql] CONNECT:[ UseTime:0.010147s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:54:13+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.002769s ]
+[2020-09-12T18:54:13+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001582s ]
+[2020-09-12T18:54:13+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001131s ]
+[2020-09-12T18:54:13+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000848s ]
+[2020-09-12T18:54:13+08:00][error] [0]语法错误: unexpected 'modele' (T_STRING), expecting ')'[D:\phpstudy_pro\WWW\chat\runtime\admin\temp\da56e8eda9d2bf7b1192decfd6da86e2.php:55]
+[2020-09-12T18:54:46+08:00][sql] CONNECT:[ UseTime:0.010892s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:54:46+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.007656s ]
+[2020-09-12T18:54:46+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001339s ]
+[2020-09-12T18:54:46+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.005127s ]
+[2020-09-12T18:54:46+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000294s ]
+[2020-09-12T18:54:46+08:00][error] [0]语法错误: unexpected 'module' (T_STRING), expecting ')'[D:\phpstudy_pro\WWW\chat\runtime\admin\temp\da56e8eda9d2bf7b1192decfd6da86e2.php:55]
+[2020-09-12T18:56:44+08:00][sql] CONNECT:[ UseTime:0.001173s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:56:44+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.002149s ]
+[2020-09-12T18:56:44+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000365s ]
+[2020-09-12T18:56:44+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001227s ]
+[2020-09-12T18:56:44+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.001119s ]
+[2020-09-12T18:57:45+08:00][sql] CONNECT:[ UseTime:0.000683s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:57:45+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001398s ]
+[2020-09-12T18:57:45+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001209s ]
+[2020-09-12T18:57:45+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000933s ]
+[2020-09-12T18:57:45+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000533s ]
+[2020-09-12T18:57:45+08:00][error] [0]语法错误: unexpected 'module' (T_STRING), expecting ')'[D:\phpstudy_pro\WWW\chat\runtime\admin\temp\da56e8eda9d2bf7b1192decfd6da86e2.php:66]
+[2020-09-12T18:58:22+08:00][sql] CONNECT:[ UseTime:0.011342s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:58:22+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001979s ]
+[2020-09-12T18:58:22+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000748s ]
+[2020-09-12T18:58:22+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000588s ]
+[2020-09-12T18:58:22+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000614s ]
+[2020-09-12T18:59:08+08:00][sql] CONNECT:[ UseTime:0.003073s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:59:08+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001900s ]
+[2020-09-12T18:59:08+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000798s ]
+[2020-09-12T18:59:08+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001396s ]
+[2020-09-12T18:59:08+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000655s ]
+[2020-09-12T18:59:08+08:00][error] [0]语法错误: unexpected 'module' (T_STRING), expecting ')'[D:\phpstudy_pro\WWW\chat\runtime\admin\temp\da56e8eda9d2bf7b1192decfd6da86e2.php:59]
+[2020-09-12T18:59:46+08:00][sql] CONNECT:[ UseTime:0.000722s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:59:46+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001486s ]
+[2020-09-12T18:59:46+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000887s ]
+[2020-09-12T18:59:46+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000579s ]
+[2020-09-12T18:59:46+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000262s ]
+[2020-09-12T18:59:54+08:00][sql] CONNECT:[ UseTime:0.000629s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T18:59:54+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001049s ]
+[2020-09-12T18:59:54+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000933s ]
+[2020-09-12T18:59:54+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000925s ]
+[2020-09-12T18:59:54+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000282s ]
+[2020-09-12T19:00:28+08:00][sql] CONNECT:[ UseTime:0.003271s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:00:28+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001644s ]
+[2020-09-12T19:00:28+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000386s ]
+[2020-09-12T19:00:28+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.002361s ]
+[2020-09-12T19:00:28+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000416s ]
+[2020-09-12T19:00:28+08:00][error] [0]语法错误: unexpected 'module' (T_STRING), expecting ')'[D:\phpstudy_pro\WWW\chat\runtime\admin\temp\da56e8eda9d2bf7b1192decfd6da86e2.php:59]
+[2020-09-12T19:01:09+08:00][sql] CONNECT:[ UseTime:0.000622s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:01:09+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001983s ]
+[2020-09-12T19:01:09+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000392s ]
+[2020-09-12T19:01:09+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001874s ]
+[2020-09-12T19:01:09+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000974s ]
+[2020-09-12T19:01:09+08:00][error] [0]语法错误: unexpected '')); ?>"><?php echo htmlentiti' (T_CONSTANT_ENCAPSED_STRING), expecting ')'[D:\phpstudy_pro\WWW\chat\runtime\admin\temp\da56e8eda9d2bf7b1192decfd6da86e2.php:59]
+[2020-09-12T19:01:28+08:00][sql] CONNECT:[ UseTime:0.000907s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:01:28+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003882s ]
+[2020-09-12T19:01:28+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000665s ]
+[2020-09-12T19:01:28+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000613s ]
+[2020-09-12T19:01:28+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000218s ]
+[2020-09-12T19:01:28+08:00][error] [0]语法错误: unexpected ''); ?>"><?php echo htmlentitie' (T_CONSTANT_ENCAPSED_STRING), expecting ')'[D:\phpstudy_pro\WWW\chat\runtime\admin\temp\da56e8eda9d2bf7b1192decfd6da86e2.php:59]
+[2020-09-12T19:01:36+08:00][sql] CONNECT:[ UseTime:0.010728s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:01:36+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003518s ]
+[2020-09-12T19:01:36+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000358s ]
+[2020-09-12T19:01:36+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000486s ]
+[2020-09-12T19:01:36+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000222s ]
+[2020-09-12T19:02:02+08:00][sql] CONNECT:[ UseTime:0.011003s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:02:02+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003893s ]
+[2020-09-12T19:02:02+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000391s ]
+[2020-09-12T19:02:02+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000553s ]
+[2020-09-12T19:02:02+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000242s ]
+[2020-09-12T19:07:38+08:00][sql] CONNECT:[ UseTime:0.000936s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:07:38+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003312s ]
+[2020-09-12T19:07:38+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001161s ]
+[2020-09-12T19:07:38+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000606s ]
+[2020-09-12T19:07:38+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000229s ]
+[2020-09-12T19:07:52+08:00][sql] CONNECT:[ UseTime:0.000720s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:07:52+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.002086s ]
+[2020-09-12T19:07:52+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000572s ]
+[2020-09-12T19:07:52+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.002664s ]
+[2020-09-12T19:07:52+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000241s ]
+[2020-09-12T19:11:18+08:00][sql] CONNECT:[ UseTime:0.009740s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:11:18+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.003824s ]
+[2020-09-12T19:11:18+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001400s ]
+[2020-09-12T19:11:18+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001074s ]
+[2020-09-12T19:11:18+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000439s ]
+[2020-09-12T19:12:26+08:00][sql] CONNECT:[ UseTime:0.003753s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:12:26+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.002219s ]
+[2020-09-12T19:12:26+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001529s ]
+[2020-09-12T19:12:26+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.000555s ]
+[2020-09-12T19:12:26+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000586s ]
+[2020-09-12T19:30:01+08:00][sql] CONNECT:[ UseTime:0.005694s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:30:01+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.016113s ]
+[2020-09-12T19:30:01+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001930s ]
+[2020-09-12T19:30:01+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001458s ]
+[2020-09-12T19:30:01+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000655s ]
+[2020-09-12T19:30:01+08:00][error] [0]Argument 1 passed to app\admin\model\Menu::menuList() must be of the type array, object given, called in D:\phpstudy_pro\WWW\chat\app\admin\controller\Home.php on line 21[D:\phpstudy_pro\WWW\chat\app\admin\model\Menu.php:107]
+[2020-09-12T19:30:25+08:00][sql] CONNECT:[ UseTime:0.011157s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:30:25+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.004980s ]
+[2020-09-12T19:30:25+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.000919s ]
+[2020-09-12T19:30:25+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001143s ]
+[2020-09-12T19:30:25+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000266s ]
+[2020-09-12T19:45:17+08:00][sql] CONNECT:[ UseTime:0.001018s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:45:17+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.001655s ]
+[2020-09-12T19:45:17+08:00][sql] SELECT * FROM `c_admin_menu` WHERE  `is_display` = 1 ORDER BY `orders` DESC [ RunTime:0.001658s ]
+[2020-09-12T19:45:17+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_cate` [ RunTime:0.001219s ]
+[2020-09-12T19:45:17+08:00][sql] SELECT `permissions` FROM `c_admin_cate` WHERE  `id` = 25 LIMIT 1 [ RunTime:0.000578s ]
+[2020-09-12T19:45:19+08:00][error] [0]模板文件不存在:D:\phpstudy_pro\WWW\chat\app\admin\view\menus\index.html[D:\phpstudy_pro\WWW\chat\vendor\topthink\think-view\src\Think.php:146]
+[2020-09-12T19:46:09+08:00][sql] CONNECT:[ UseTime:0.001232s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:46:09+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.002961s ]
+[2020-09-12T19:46:09+08:00][sql] SELECT * FROM `c_admin_menu` [ RunTime:0.000744s ]
+[2020-09-12T19:47:31+08:00][sql] CONNECT:[ UseTime:0.001430s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:47:31+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.005452s ]
+[2020-09-12T19:47:31+08:00][sql] SELECT * FROM `c_admin_menu` [ RunTime:0.001091s ]
+[2020-09-12T19:48:50+08:00][sql] CONNECT:[ UseTime:0.000871s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:48:50+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.002268s ]
+[2020-09-12T19:48:50+08:00][sql] SELECT * FROM `c_admin_menu` [ RunTime:0.000847s ]
+[2020-09-12T19:53:01+08:00][sql] CONNECT:[ UseTime:0.003662s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:53:01+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.008101s ]
+[2020-09-12T19:53:01+08:00][sql] SELECT * FROM `c_admin_menu` [ RunTime:0.000732s ]
+[2020-09-12T19:53:58+08:00][sql] CONNECT:[ UseTime:0.001971s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:53:58+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.004383s ]
+[2020-09-12T19:53:58+08:00][sql] SELECT * FROM `c_admin_menu` [ RunTime:0.000356s ]
+[2020-09-12T19:54:09+08:00][sql] CONNECT:[ UseTime:0.001146s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:54:09+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.002826s ]
+[2020-09-12T19:54:09+08:00][sql] SELECT * FROM `c_admin_menu` [ RunTime:0.000654s ]
+[2020-09-12T19:55:23+08:00][sql] CONNECT:[ UseTime:0.000956s ] mysql:host=127.0.0.1;port=3306;dbname=chat;charset=utf8
+[2020-09-12T19:55:23+08:00][sql] SHOW FULL COLUMNS FROM `c_admin_menu` [ RunTime:0.002295s ]
+[2020-09-12T19:55:23+08:00][sql] SELECT * FROM `c_admin_menu` [ RunTime:0.000836s ]
