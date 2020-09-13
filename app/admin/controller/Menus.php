@@ -22,8 +22,10 @@ class Menus extends BaseController
 
     public function menu_list()
     {
+        $get = input('get.');
         $menu = new MenuModel();
-        $list = $menu->select();
-        return $list;
+        $list = $menu->page($get['offset'],$get['limit'])->select();
+        $total = $menu->count();
+        return json(['rows'=>$list, 'total'=>$total]);
     }
 }
