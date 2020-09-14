@@ -4,28 +4,104 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="shortcut icon" href="__ICO__/favicon.ico"> <link href="__CSS__/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-
+    <link href="__CSS__/font-awesome.css?v=4.4.0" rel="stylesheet">
     <link href="__CSS__/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="__CSS__/animate.css" rel="stylesheet">
+    <link href="__CSS__/style.css?v=4.1.0" rel="stylesheet">
+    <link href="__CSS__/plugins/toastr/toastr.min.css" rel="stylesheet">
 </head>
-<body>
-<div class="panel panel-default" style="margin-bottom:50px;">
-    <div class="panel-heading">
-        菜单管理
+<body class="gray-bg">
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>菜单管理</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="#">选项1</a>
+                    </li>
+                    <li><a href="#">选项2</a>
+                    </li>
+                </ul>
+                <a class="close-link">
+                    <i class="fa fa-times"></i>
+                </a>
+
+            </div>
+        </div>
+        <div class="ibox-content">
+            <div class="row row-lg">
+
+                    <h4 class="example-title">数据操作</h4>
+                    <div class="example">
+                        <table id="madArea_table"></table>
+                    </div>
+                </div>
+
+        </div>
+
+    </div>
+    <!-- End Panel Basic -->
+
+</div>
+
+<!--模态框start-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">New message</h4>
+            </div>
+            <div class="modal-body">
+                <form action="" role="form" id="form_data">
+                    <div class="form-group">
+                        <label for="recipient-name" class="control-label">菜单名:</label>
+                        <input type="text" name='name' class="form-control" id="recipient-name">
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="control-label">规则:</label>
+                        <input class="form-control" name='title' id="message-text">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="commit()">Send message</button>
+            </div>
+        </div>
+    </div>
+    <div id="toolbar">
+        <form class="form-inline">
+            <button type="button" class="btn btn-primary glyphicon glyphicon-plus"  data-toggle="modal" data-target="#exampleModal" data-whatever=""></button>
+
+        </form>
     </div>
 </div>
+<!--模态框end-->
+
+
+
 {include file="/public/js"}
 <script src="__JS__/plugins/bootstrap-table/bootstrap-table.min.js"></script>
 <script src="__JS__/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.js"></script>
-<table id="madArea_table"></table>
+<script src="__JS__/plugins/toastr/toastr.min.js"></script>
 
 <script>
     function addFunctionAlty(value, row, index) {
         return [
 /*            "<a href='javascript:;' class='btn btn-xs green'  title='查看'><span class='glyphicon glyphicon-search'></span></a>",*/
-            "<a href='javascript:;' class='btn btn-success'  title='编辑'><span class='glyphicon glyphicon-pencil'></span></a>",
-            "<a href='javascript:;' class='btn btn-danger'  title='删除'><span class='glyphicon glyphicon-remove'></span></a>"
+            "<button class=\"btn btn-success\" onclick=\"update('" + value + "')\"> 修改 </button>" +
+            "&nbsp;&nbsp;" +
+            "<button class=\"btn btn-danger\" onclick=\"delete('" + value + "')\"> 删除 </button>"
         ].join('');
     }
+
     window.operateEvents = {
         'click #bind': function (e, value, row, index) {
             console.log(e);
@@ -50,7 +126,8 @@
         //2.初始化Button的点击事件
         var oButtonInit = new ButtonInit();
         oButtonInit.Init();
-
+        //初始化
+        toastr.options.positionClass = 'toast-top-right';
     });
     var TableInit = function () {
         var oTableInit = new Object();
@@ -144,6 +221,56 @@
 
         return oInit;
     };
+    $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var recipient = button.data('whatever') // Extract info from data-* attributes
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        console.log('55')
+        modal.find('.modal-title').text('New message to ' + recipient)
+        modal.find('.modal-body input').val(recipient)
+    })
+
+    // 提交表单
+    function commit()
+    {
+
+        var form_data = $('#form_data').serialize();
+
+        // 异步提交数据到action/add_action.php页面
+        $.ajax(
+            {
+                url: "add_menus",
+                data:form_data,
+                type: "post",
+                dataType:'json',
+                success:function(data)
+                {
+                    if(data.status == 1000)
+                    {
+                        toastr.success(data.message)
+                        setTimeout(function() {
+                            location.reload();
+                        }, 3000)
+                    }
+                    else
+                    {
+                        toastr.error(data.message)
+                    }
+                },
+                error:function(data)
+                {
+                    toastr.error('错误')
+                },
+                complete:function()
+                {
+                    $('#acting_tips').hide();
+                }
+            });
+
+        return false;
+    }
 
 </script>
 </body>

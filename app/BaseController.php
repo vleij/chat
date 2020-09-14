@@ -3,6 +3,7 @@ declare (strict_types = 1);
 
 namespace app;
 
+use app\admin\controller\Config;
 use think\App;
 use think\exception\ValidateException;
 use think\Validate;
@@ -91,4 +92,9 @@ abstract class BaseController
         return $v->failException(true)->check($data);
     }
 
+    public function __call($name, $arguments)
+    {
+        // TODO: Implement __call() method.
+        return replace(\config('status.action_not_font'), "找不到该{$name}方法", [], 404);
+    }
 }

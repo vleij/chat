@@ -11,21 +11,47 @@ namespace app\admin\controller;
 
 use app\BaseController;
 use think\facade\View;
-use app\admin\model\Menu as MenuModel;
+use app\common\model\mysql\Menu as MenuModel;
+use app\common\model\mysql\AuthRule as AuthRuleModel;
 class Menus extends BaseController
 {
+    /**
+     * Notes:菜单管理模板
+     * User: Administrator
+     * Date: 2020/9/14
+     * Time: 11:37
+     * @return string
+     * @author: 雷佳
+     */
     public function index()
     {
-
         return View::fetch();
     }
 
+    /**
+     * Notes:菜单管理列表数据
+     * User: Administrator
+     * Date: 2020/9/14
+     * Time: 11:03
+     * @return \think\response\Json
+     * @author: 雷佳
+     */
     public function menu_list()
     {
         $get = input('get.');
         $menu = new MenuModel();
-        $list = $menu->page($get['offset'],$get['limit'])->select();
-        $total = $menu->count();
-        return json(['rows'=>$list, 'total'=>$total]);
+        $data= $menu->pagingMenu($get['offset'],$get['limit']);
+        return json(['rows'=>$data['data'], 'total'=>$data['total']]);
+    }
+
+    public function add_menus()
+    {
+        $authrule = new AuthRuleModel();
+        $res = $authrule->addRule();
+        if($res === 10501){
+            return replace(config('status.error'), '菜单名重复', [],200);
+        }else{
+            return replace(config('status.succeed'), '提交成功', [], 200);
+        }
     }
 }

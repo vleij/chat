@@ -12,29 +12,35 @@ namespace app\admin\controller;
 use app\BaseController;
 use think\facade\View;
 use think\facade\Request;
-use app\admin\model\Menu as MenuModel;
+use app\common\business\home as HomeBusiness;
 class Home extends BaseController
 {
+    /**
+     * Notes:后台框架模板
+     * User: Administrator
+     * Date: 2020/9/14
+     * Time: 11:37
+     * @return string
+     * @author: 雷佳
+     */
     public function index(){
-        $menu = new MenuModel();
-        $list = $menu->menu_list();
-        $menu_list = $menu->menuList($list);
-
+        $menu = new HomeBusiness();
+        $menu_list = $menu->getAllMenusData();
         View::assign([
             'menu'  => $menu_list,
         ]);
         return View::fetch();
     }
 
+    /**
+     * Notes:框架主体模板
+     * User: Administrator
+     * Date: 2020/9/14
+     * Time: 11:38
+     * @return string
+     * @author: 雷佳
+     */
     public function main(){
         return View::fetch();
-    }
-
-    public function add_menu()
-    {
-        $menu = new MenuModel();
-        // 过滤post数组中的非数据表字段数据
-        $data = Request::only(['name','email']);
-        $menu->save($data);
     }
 }
