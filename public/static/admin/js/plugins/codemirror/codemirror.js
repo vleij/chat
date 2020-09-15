@@ -233,7 +233,7 @@
     // True when shift is held down.
     d.shift = false;
 
-    // Used to track whether anything happened since the context menus
+    // Used to track whether anything happened since the context menu
     // was opened.
     d.selForContextMenu = null;
   }
@@ -2536,8 +2536,8 @@
     on(d.lineSpace, "selectstart", function(e) {
       if (!eventInWidget(d, e)) e_preventDefault(e);
     });
-    // Some browsers fire contextmenu *after* opening the menus, at
-    // which point we can't mess with it anymore. Context menus is
+    // Some browsers fire contextmenu *after* opening the menu, at
+    // which point we can't mess with it anymore. Context menu is
     // handled in onMouseDown for these browsers.
     if (!captureRightClick) on(d.scroller, "contextmenu", function(e) {onContextMenu(cm, e);});
 
@@ -3288,7 +3288,7 @@
       cm.state.focused = true;
       addClass(cm.display.wrapper, "CodeMirror-focused");
       // The prevInput test prevents this from firing when a context
-      // menus is closed (since the resetInput would kill the
+      // menu is closed (since the resetInput would kill the
       // select-all detection hack)
       if (!cm.curOp && cm.display.selForContextMenu != cm.doc.sel) {
         resetInput(cm);
@@ -3310,7 +3310,7 @@
 
   // CONTEXT MENU HANDLING
 
-  // To make the context menus work, we need to briefly unhide the
+  // To make the context menu work, we need to briefly unhide the
   // textarea (making it as unobtrusive as possible) to let the
   // right-click take effect on it.
   function onContextMenu(cm, e) {
@@ -3337,7 +3337,7 @@
     focusInput(cm);
     if (webkit) window.scrollTo(null, oldScrollY);
     resetInput(cm);
-    // Adds "Select all" to context menus in FF
+    // Adds "Select all" to context menu in FF
     if (!cm.somethingSelected()) display.input.value = display.prevInput = " ";
     display.selForContextMenu = cm.doc.sel;
     clearTimeout(display.detectingSelectAll);

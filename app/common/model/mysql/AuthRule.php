@@ -19,7 +19,7 @@ class AuthRule extends Model
         // 启动事务
         Db::startTrans();
         try {
-            $data = Request::only(['name','title']);
+            $data = Request::only(['name','title','pid']);
             $res = $this->save($data);
             // 提交事务
             Db::commit();
@@ -30,9 +30,25 @@ class AuthRule extends Model
         return $res;
     }
 
-    public function all()
+    public function allRule()
     {
         $data = $this->select();
         return $data;
     }
+
+    /**
+     * Notes:
+     * User: ${FILE_NAME}
+     * User: Administrator
+     * Date: 2020/9/14
+     * Time: 10:46
+     * @author: 雷佳
+     */
+    public function pagingMenu($offset, $limit)
+    {
+        $list = $this->page($offset,$limit)->select();
+        $total = $this->count();
+        return ['data'=>$list,'total'=>$total];
+    }
+
 }

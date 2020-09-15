@@ -6,17 +6,12 @@
  * Time: 10:12
  */
 namespace app\common\business;
-use app\common\model\mysql\Admin;
-use app\common\model\mysql\AuthGroup;
-use app\common\model\mysql\Menu as MenuModel;
-use app\common\model\mysql\Cate as CateModel;
+use app\common\model\mysql\AuthGroup as AuthGroupModel;
 use app\common\model\mysql\AuthRule as AuthRuleModel;
-use app\common\model\mysql\Admin as AdminModel;
-use app\common\model\mysql\AuthGroupAccess as AuthGroupModel;
 class Home
 {
     /**
-     * Notes: 获取
+     * Notes: 前端获取菜单数据
      * User: Administrator
      * Date: 2020/9/14
      * Time: 10:57
@@ -25,7 +20,7 @@ class Home
      */
     public function getAllMenusData()
     {
-        $list = $this->menu_list();
+        $list = $this->menu_assemble();
         $menu_list = $this->menuList($list);
         return $menu_list;
     }
@@ -45,9 +40,7 @@ class Home
         $data = array();
         foreach ($menu as $k=>$v){        //PID符合条件的
             if($v['pid'] == $id){            //寻找子集
-
                 $child = $this->menuList($menu,$v['id']);            //加入数组
-
                 $v['child'] = $child?:array();
                 $data[] = $v;//加入数组中
             }
@@ -64,37 +57,27 @@ class Home
      * @return mixed
      * @author: 雷佳
      */
-//    public function  menu_list(){
-//        /*菜单开始*/
-//        $menus = new MenuModel();
-//        $cate = new CateModel();
-//        $menu = $menus->getShowMenuData();
-//        //删除不在当前角色权限里的菜单，实现隐藏
-//        $admin_cate = 25;//Session::get('admin_cate_id');
-//        $permissions = $cate->getPermissions($admin_cate);
-//
-//        $permissions = explode(',',$permissions);
-//
-//        foreach ($menu as $k => $val) {
-//            if($val['type'] == 1 and $val['is_display'] == 1 and !in_array($val['id'],$permissions)) {
-//                unset($menu[$k]);
-//            }
-//        }
-//
-//        foreach ($menu as $key => $value) {
-//            if(empty($value['parameter'])) {
-//                $url = url($value['module'].'/'.$value['controller'].'/'.$value['function']);
-//            } else {
-//                $url = url($value['module'].'/'.$value['controller'].'/'.$value['function'],$value['parameter']);
-//            }
-//            $menu[$key]['url'] = $url;
-//        }
-//        return $menu;
-//    }
-
-    public function menu_list()
+    public function menu_assemble()
     {
-        $admin = AuthGroup::find(1);
-        $admin2 = Admin::find(1);
+        $admin_cate = 1;//Session::get('admin_cate_id');
+        $authRule = new AuthRuleModel();
+        $authGroup = new AuthGroupModel();
+        $menu = $authRule->allRule()->toArray();
+        $permissions = $authGroup->getRules($admin_cate);
+        $permissions = explode(',',$permissions);
+        $possess_rule = [];
+        foreach ($menu as $k => $val) {
+            if($val['type'] == 1 and $val['is_display'] == 1 and in_array($val['id'],$permissions)) {
+                if(empty($value['parameter'])) {
+                    $url = (string)url('/'.$val['title']);
+                } else {
+                    $url = (string)url('/'.$val['title'],$val['parameter']);
+                }
+                $val['url'] = $url;
+                $possess_rule[$k] = $val;
+            }
+            continue;
+        }
+        return $possess_rule;
     }
 }

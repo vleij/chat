@@ -8,8 +8,3 @@
 // +----------------------------------------------------------------------
 // | Author: liu21st <liu21st@gmail.com>
 // +----------------------------------------------------------------------
-use think\facade\Route;
-
-Route::rule('admin_home','admin/home/index');
-Route::rule('main','admin/home/main');
-Route::rule('admin_login','admin/login/index');

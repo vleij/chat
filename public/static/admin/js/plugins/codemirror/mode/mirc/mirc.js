@@ -41,7 +41,7 @@ CodeMirror.defineMode("mirc", function() {
                             "$isid $islower $istok $isupper $keychar $keyrpt $keyval $knick $lactive " +
                             "$lactivecid $lactivewid $left $len $level $lf $line $lines $link $lock " +
                             "$lock $locked $log $logstamp $logstampfmt $longfn $longip $lower $ltimer " +
-                            "$maddress $mask $matchkey $matchtok $md5 $me $menus $menubar $menucontext " +
+                            "$maddress $mask $matchkey $matchtok $md5 $me $menu $menubar $menucontext " +
                             "$menutype $mid $middir $mircdir $mircexe $mircini $mklogfn $mnick $mode " +
                             "$modefirst $modelast $modespl $mouse $msfile $network $newnick $nick $nofile " +
                             "$nopath $noqt $not $notags $notify $null $numeric $numok $oline $onpoly " +
@@ -79,7 +79,7 @@ CodeMirror.defineMode("mirc", function() {
                             "var vcadd vcmd vcrem vol while whois window winhelp write writeint if isalnum " +
                             "isalpha isaop isavoice isban ischan ishop isignore isin isincs isletter islower " +
                             "isnotify isnum ison isop isprotect isreg isupper isvoice iswm iswmcs " +
-                            "elseif else goto menus nicklist status title icon size option text edit " +
+                            "elseif else goto menu nicklist status title icon size option text edit " +
                             "button check radio box scroll list combo link tab item");
   var functions = parseWords("if elseif else and not or eq ne in ni for foreach while switch");
   var isOperatorChar = /[+\-*&%=<>!?^\/\|]/;

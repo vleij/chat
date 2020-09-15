@@ -32,7 +32,7 @@
                 {volist name="one['child']" id='two'}
                 <ul class="nav nav-second-level">
                     {empty name="two['child']"}
-                    <li><a class="J_menuItem" href="{$two['controller']}/{$two['function']}">{$two['name']}</a>
+                    <li><a class="J_menuItem" href="{$two['url']}">{$two['name']}</a>
                     </li>
                     {/empty}
                     {notempty name="two['child']"}
@@ -40,7 +40,7 @@
                         <a href="#">{$two['name']}<span class="fa arrow"></span></a>
                         <ul class="nav nav-third-level">
                             {volist name="two['child']" id='three'}
-                            <li><a class="J_menuItem" href="form_webuploader.html">{$three['name']}</a>
+                            <li><a class="J_menuItem" href="{$two['url']}">{$three['name']}</a>
                             </li>
                             {/volist}
                         </ul>

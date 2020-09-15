@@ -1,6 +1,6 @@
 /*
  * metismenu - v1.1.3
- * Easy menus jQuery plugin for Twitter Bootstrap 3
+ * Easy menu jQuery plugin for Twitter Bootstrap 3
  * https://github.com/onokumus/metisMenu
  *
  * Made by Osman Nuri Okumus

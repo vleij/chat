@@ -294,7 +294,7 @@
             buttonContainer: '<div class="btn-group" />',
             dropRight: false,
             selectedClass: 'active',
-            // Maximum height of the dropdown menus.
+            // Maximum height of the dropdown menu.
             // If maximum height is exceeded a scrollbar will be displayed.
             maxHeight: false,
             checkboxName: false,
@@ -319,7 +319,7 @@
             disableIfEmpty: false,
             templates: {
                 button: '<button type="button" class="multiselect dropdown-toggle" data-toggle="dropdown"><span class="multiselect-selected-text"></span> <b class="caret"></b></button>',
-                ul: '<ul class="multiselect-container dropdown-menus"></ul>',
+                ul: '<ul class="multiselect-container dropdown-menu"></ul>',
                 filter: '<li class="multiselect-item filter"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span><input class="form-control multiselect-search" type="text"></div></li>',
                 filterClearBtn: '<span class="input-group-btn"><button class="btn btn-default multiselect-clear-filter" type="button"><i class="glyphicon glyphicon-remove-circle"></i></button></span>',
                 li: '<li><a tabindex="0"><label></label></a></li>',
@@ -379,7 +379,7 @@
         },
 
         /**
-         * Builds the ul representing the dropdown menus.
+         * Builds the ul representing the dropdown menu.
          */
         buildDropdown: function() {
 
@@ -390,7 +390,7 @@
                 this.$ul.addClass('pull-right');
             }
 
-            // Set max height of dropdown menus to activate auto scrollbar.
+            // Set max height of dropdown menu to activate auto scrollbar.
             if (this.options.maxHeight) {
                 // TODO: Add a class for this option to move the css declarations.
                 this.$ul.css({

@@ -28,6 +28,7 @@ use \GatewayWorker\Lib\Gateway;
  */
 class Events
 {
+    public static $global_queue;
     /**
      * 当客户端连接时触发
      * 如果业务不需此回调可以删除onConnect
@@ -49,8 +50,22 @@ class Events
     */
    public static function onMessage($client_id, $message)
    {
+       $message = json_decode($message, true);
+       switch ($message['type']) {
+           //客服初始
+           case 'init':
+               $serviceList = self::$global_queue->serviceList;
+               //已在内存中客服
+               if(!isset($serviceList[$message['group']]) || !array_key_exists($message['service_id'], $serviceList[$message['group']])){
+                    var_dump($message);
+
+               }else{
+                   //新客服
+               }
+
+       }
         // 向所有人发送 
-        Gateway::sendToAll("$client_id said $message\r\n");
+        //Gateway::sendToAll("$client_id said $message\r\n");
    }
    
    /**

@@ -11,7 +11,6 @@ namespace app\admin\controller;
 
 use app\BaseController;
 use think\facade\View;
-use think\facade\Request;
 use app\common\business\home as HomeBusiness;
 class Home extends BaseController
 {

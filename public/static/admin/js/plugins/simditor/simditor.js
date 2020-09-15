@@ -1955,12 +1955,12 @@ Toolbar = (function(_super) {
     })(this));
     this.wrapper.on('mousedown', (function(_this) {
       return function(e) {
-        return _this.list.find('.menus-on').removeClass('.menus-on');
+        return _this.list.find('.menu-on').removeClass('.menu-on');
       };
     })(this));
     $(document).on('mousedown.simditor' + this.editor.id, (function(_this) {
       return function(e) {
-        return _this.list.find('.menus-on').removeClass('.menus-on');
+        return _this.list.find('.menu-on').removeClass('.menu-on');
       };
     })(this));
     if (!this.opts.toolbarHidden && this.opts.toolbarFloat) {
@@ -2009,7 +2009,7 @@ Toolbar = (function(_super) {
     })(this));
     return $(document).on('mousedown.simditor-' + this.editor.id, (function(_this) {
       return function(e) {
-        return _this.list.find('li.menus-on').removeClass('menus-on');
+        return _this.list.find('li.menu-on').removeClass('menu-on');
       };
     })(this));
   };
@@ -2358,8 +2358,8 @@ Button = (function(_super) {
 
   Button.prototype._tpl = {
     item: '<li><a tabindex="-1" unselectable="on" class="toolbar-item" href="javascript:;"><span></span></a></li>',
-    menuWrapper: '<div class="toolbar-menus"></div>',
-    menuItem: '<li><a tabindex="-1" unselectable="on" class="menus-item" href="javascript:;"><span></span></a></li>',
+    menuWrapper: '<div class="toolbar-menu"></div>',
+    menuItem: '<li><a tabindex="-1" unselectable="on" class="menu-item" href="javascript:;"><span></span></a></li>',
     separator: '<li><span class="separator"></span></li>'
   };
 
@@ -2402,8 +2402,8 @@ Button = (function(_super) {
           return false;
         }
         if (_this.menu) {
-          _this.wrapper.toggleClass('menus-on').siblings('li').removeClass('menus-on');
-          if (_this.wrapper.is('.menus-on')) {
+          _this.wrapper.toggleClass('menu-on').siblings('li').removeClass('menu-on');
+          if (_this.wrapper.is('.menu-on')) {
             exceed = _this.menuWrapper.offset().left + _this.menuWrapper.outerWidth() + 5 - _this.editor.wrapper.offset().left - _this.editor.wrapper.outerWidth();
             if (exceed > 0) {
               _this.menuWrapper.css({
@@ -2420,22 +2420,22 @@ Button = (function(_super) {
         return false;
       };
     })(this));
-    this.wrapper.on('click', 'a.menus-item', (function(_this) {
+    this.wrapper.on('click', 'a.menu-item', (function(_this) {
       return function(e) {
         var btn, param;
         e.preventDefault();
         btn = $(e.currentTarget);
-        _this.wrapper.removeClass('menus-on');
+        _this.wrapper.removeClass('menu-on');
         if (btn.hasClass('disabled') || (_this.needFocus && !_this.editor.inputManager.focused)) {
           return false;
         }
-        _this.editor.toolbar.wrapper.removeClass('menus-on');
+        _this.editor.toolbar.wrapper.removeClass('menu-on');
         param = btn.data('param');
         _this.command(param);
         return false;
       };
     })(this));
-    this.wrapper.on('mousedown', 'a.menus-item', (function(_this) {
+    this.wrapper.on('mousedown', 'a.menu-item', (function(_this) {
       return function(e) {
         return false;
       };
@@ -2477,7 +2477,7 @@ Button = (function(_super) {
       return;
     }
     this.menuWrapper = $(this._tpl.menuWrapper).appendTo(this.wrapper);
-    this.menuWrapper.addClass('toolbar-menus-' + this.name);
+    this.menuWrapper.addClass('toolbar-menu-' + this.name);
     return this.renderMenu();
   };
 
@@ -2496,10 +2496,10 @@ Button = (function(_super) {
         continue;
       }
       $menuItemEl = $(this._tpl.menuItem).appendTo(this.menuEl);
-      _results.push($menuBtntnEl = $menuItemEl.find('a.menus-item').attr({
+      _results.push($menuBtntnEl = $menuItemEl.find('a.menu-item').attr({
         'title': (_ref1 = menuItem.title) != null ? _ref1 : menuItem.text,
         'data-param': menuItem.param
-      }).addClass('menus-item-' + menuItem.name).find('span').text(menuItem.text));
+      }).addClass('menu-item-' + menuItem.name).find('span').text(menuItem.text));
     }
     return _results;
   };
@@ -2999,7 +2999,7 @@ ColorButton = (function(_super) {
     return this.menuWrapper.on('click', '.font-color', (function(_this) {
       return function(e) {
         var $link, $p, hex, rgb;
-        _this.wrapper.removeClass('menus-on');
+        _this.wrapper.removeClass('menu-on');
         $link = $(e.currentTarget);
         if ($link.hasClass('font-color-default')) {
           $p = _this.editor.body.find('p, li');
@@ -3814,7 +3814,7 @@ ImageButton = (function(_super) {
   ImageButton.prototype.renderMenu = function() {
     var $input, $uploadItem, createInput;
     ImageButton.__super__.renderMenu.call(this);
-    $uploadItem = this.menuEl.find('.menus-item-upload-image');
+    $uploadItem = this.menuEl.find('.menu-item-upload-image');
     $input = null;
     createInput = (function(_this) {
       return function() {
@@ -3846,7 +3846,7 @@ ImageButton = (function(_super) {
           });
           _this.editor.focus();
         }
-        return _this.wrapper.removeClass('menus-on');
+        return _this.wrapper.removeClass('menu-on');
       };
     })(this));
     return this._initUploader();
@@ -4586,25 +4586,25 @@ TableButton = (function(_super) {
   TableButton.prototype._initShortcuts = function() {
     this.editor.inputManager.addShortcut('ctrl+alt+up', (function(_this) {
       return function(e) {
-        _this.editMenu.find('.menus-item[data-param=insertRowAbove]').click();
+        _this.editMenu.find('.menu-item[data-param=insertRowAbove]').click();
         return false;
       };
     })(this));
     this.editor.inputManager.addShortcut('ctrl+alt+down', (function(_this) {
       return function(e) {
-        _this.editMenu.find('.menus-item[data-param=insertRowBelow]').click();
+        _this.editMenu.find('.menu-item[data-param=insertRowBelow]').click();
         return false;
       };
     })(this));
     this.editor.inputManager.addShortcut('ctrl+alt+left', (function(_this) {
       return function(e) {
-        _this.editMenu.find('.menus-item[data-param=insertColLeft]').click();
+        _this.editMenu.find('.menu-item[data-param=insertColLeft]').click();
         return false;
       };
     })(this));
     return this.editor.inputManager.addShortcut('ctrl+alt+right', (function(_this) {
       return function(e) {
-        _this.editMenu.find('.menus-item[data-param=insertColRight]').click();
+        _this.editMenu.find('.menu-item[data-param=insertColRight]').click();
         return false;
       };
     })(this));
@@ -4627,9 +4627,9 @@ TableButton = (function(_super) {
   };
 
   TableButton.prototype.renderMenu = function() {
-    $("<div class=\"menus-create-table\">\n</div>\n<div class=\"menus-edit-table\">\n  <ul>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menus-item\" href=\"javascript:;\" data-param=\"deleteRow\"><span>" + (this._t('deleteRow')) + " ( Ctrl + Alt + → )</span></a></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menus-item\" href=\"javascript:;\" data-param=\"insertRowAbove\"><span>" + (this._t('insertRowAbove')) + " ( Ctrl + Alt + ↑ )</span></a></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menus-item\" href=\"javascript:;\" data-param=\"insertRowBelow\"><span>" + (this._t('insertRowBelow')) + " ( Ctrl + Alt + ↓ )</span></a></li>\n    <li><span class=\"separator\"></span></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menus-item\" href=\"javascript:;\" data-param=\"deleteCol\"><span>" + (this._t('deleteColumn')) + "</span></a></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menus-item\" href=\"javascript:;\" data-param=\"insertColLeft\"><span>" + (this._t('insertColumnLeft')) + " ( Ctrl + Alt + ← )</span></a></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menus-item\" href=\"javascript:;\" data-param=\"insertColRight\"><span>" + (this._t('insertColumnRight')) + " ( Ctrl + Alt + → )</span></a></li>\n    <li><span class=\"separator\"></span></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menus-item\" href=\"javascript:;\" data-param=\"deleteTable\"><span>" + (this._t('deleteTable')) + "</span></a></li>\n  </ul>\n</div>").appendTo(this.menuWrapper);
-    this.createMenu = this.menuWrapper.find('.menus-create-table');
-    this.editMenu = this.menuWrapper.find('.menus-edit-table');
+    $("<div class=\"menu-create-table\">\n</div>\n<div class=\"menu-edit-table\">\n  <ul>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menu-item\" href=\"javascript:;\" data-param=\"deleteRow\"><span>" + (this._t('deleteRow')) + " ( Ctrl + Alt + → )</span></a></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menu-item\" href=\"javascript:;\" data-param=\"insertRowAbove\"><span>" + (this._t('insertRowAbove')) + " ( Ctrl + Alt + ↑ )</span></a></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menu-item\" href=\"javascript:;\" data-param=\"insertRowBelow\"><span>" + (this._t('insertRowBelow')) + " ( Ctrl + Alt + ↓ )</span></a></li>\n    <li><span class=\"separator\"></span></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menu-item\" href=\"javascript:;\" data-param=\"deleteCol\"><span>" + (this._t('deleteColumn')) + "</span></a></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menu-item\" href=\"javascript:;\" data-param=\"insertColLeft\"><span>" + (this._t('insertColumnLeft')) + " ( Ctrl + Alt + ← )</span></a></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menu-item\" href=\"javascript:;\" data-param=\"insertColRight\"><span>" + (this._t('insertColumnRight')) + " ( Ctrl + Alt + → )</span></a></li>\n    <li><span class=\"separator\"></span></li>\n    <li><a tabindex=\"-1\" unselectable=\"on\" class=\"menu-item\" href=\"javascript:;\" data-param=\"deleteTable\"><span>" + (this._t('deleteTable')) + "</span></a></li>\n  </ul>\n</div>").appendTo(this.menuWrapper);
+    this.createMenu = this.menuWrapper.find('.menu-create-table');
+    this.editMenu = this.menuWrapper.find('.menu-edit-table');
     this.createTable(6, 6).appendTo(this.createMenu);
     this.createMenu.on('mouseenter', 'td', (function(_this) {
       return function(e) {
@@ -4649,7 +4649,7 @@ TableButton = (function(_super) {
     return this.createMenu.on('mousedown', 'td', (function(_this) {
       return function(e) {
         var $closestBlock, $table, $td, $tr, colNum, rowNum;
-        _this.wrapper.removeClass('menus-on');
+        _this.wrapper.removeClass('menu-on');
         if (!_this.editor.inputManager.focused) {
           return;
         }

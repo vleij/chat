@@ -16,4 +16,10 @@ class AuthGroup extends Model
     {
         return $this->belongsToMany(Admin::class, AuthGroupAccess::class,'','group_id');
     }
+
+    public function getRules($admin_cate)
+    {
+        $data = $this->find($admin_cate)->value('rules');
+        return $data;
+    }
 }

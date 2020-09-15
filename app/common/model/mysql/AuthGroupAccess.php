@@ -14,10 +14,4 @@ class AuthGroupAccess extends Pivot
 
     protected $name = 'auth_group_access';
 
-
-
-
-    public function getRule(){
-        $this->hasWhere('authAdmin', ['id'=>'1'])->withJoin('authgroup')->select();
-    }
 }

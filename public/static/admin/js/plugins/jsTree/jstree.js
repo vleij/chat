@@ -5527,7 +5527,7 @@
 /**
  * ### Contextmenu plugin
  *
- * Shows a context menus when a node is right-clicked.
+ * Shows a context menu when a node is right-clicked.
  */
 
 	/**
@@ -5537,13 +5537,13 @@
 	 */
 	$.jstree.defaults.contextmenu = {
 		/**
-		 * a boolean indicating if the node should be selected when the context menus is invoked on it. Defaults to `true`.
+		 * a boolean indicating if the node should be selected when the context menu is invoked on it. Defaults to `true`.
 		 * @name $.jstree.defaults.contextmenu.select_node
 		 * @plugin contextmenu
 		 */
 		select_node : true,
 		/**
-		 * a boolean indicating if the menus should be shown aligned with the node. Defaults to `true`, otherwise the mouse coordinates are used.
+		 * a boolean indicating if the menu should be shown aligned with the node. Defaults to `true`, otherwise the mouse coordinates are used.
 		 * @name $.jstree.defaults.contextmenu.show_at_node
 		 * @plugin contextmenu
 		 */
@@ -5559,7 +5559,7 @@
 		 * * `label` - a string - the name of the action (could be a function returning a string)
 		 * * `action` - a function to be executed if this item is chosen
 		 * * `icon` - a string, can be a path to an icon or a className, if using an image that is in the current directory use a `./` prefix, otherwise it will be detected as a class
-		 * * `shortcut` - keyCode which will trigger the action if the menus is open (for example `113` for rename, which equals F2)
+		 * * `shortcut` - keyCode which will trigger the action if the menu is open (for example `113` for rename, which equals F2)
 		 * * `shortcut_label` - shortcut label (like for example `F2` for rename)
 		 *
 		 * @name $.jstree.defaults.contextmenu.items
@@ -5748,11 +5748,11 @@
 		};
 
 		/**
-		 * prepare and show the context menus for a node
+		 * prepare and show the context menu for a node
 		 * @name show_contextmenu(obj [, x, y])
 		 * @param {mixed} obj the node
-		 * @param {Number} x the x-coordinate relative to the document to show the menus at
-		 * @param {Number} y the y-coordinate relative to the document to show the menus at
+		 * @param {Number} x the x-coordinate relative to the document to show the menu at
+		 * @param {Number} y the y-coordinate relative to the document to show the menu at
 		 * @param {Object} e the event if available that triggered the contextmenu
 		 * @plugin contextmenu
 		 * @trigger show_contextmenu.jstree
@@ -5785,11 +5785,11 @@
 			}
 		};
 		/**
-		 * show the prepared context menus for a node
+		 * show the prepared context menu for a node
 		 * @name _show_contextmenu(obj, x, y, i)
 		 * @param {mixed} obj the node
-		 * @param {Number} x the x-coordinate relative to the document to show the menus at
-		 * @param {Number} y the y-coordinate relative to the document to show the menus at
+		 * @param {Number} x the x-coordinate relative to the document to show the menu at
+		 * @param {Number} y the y-coordinate relative to the document to show the menu at
 		 * @param {Number} i the object of items to show
 		 * @plugin contextmenu
 		 * @trigger show_contextmenu.jstree
@@ -5809,8 +5809,8 @@
 			 * @event
 			 * @name show_contextmenu.jstree
 			 * @param {Object} node the node
-			 * @param {Number} x the x-coordinate of the menus relative to the document
-			 * @param {Number} y the y-coordinate of the menus relative to the document
+			 * @param {Number} x the x-coordinate of the menu relative to the document
+			 * @param {Number} y the y-coordinate of the menu relative to the document
 			 * @plugin contextmenu
 			 */
 			this.trigger('show_contextmenu', { "node" : obj, "x" : x, "y" : y });
@@ -5904,8 +5904,8 @@
 				 * @plugin contextmenu
 				 * @name context_parse.vakata
 				 * @param {jQuery} reference the element that was right clicked
-				 * @param {jQuery} element the DOM element of the menus itself
-				 * @param {Object} position the x & y coordinates of the menus
+				 * @param {jQuery} element the DOM element of the menu itself
+				 * @param {Object} position the x & y coordinates of the menu
 				 */
 				if(!is_callback) { vakata_context.html = str; $.vakata.context._trigger("parse"); }
 				return str.length > 10 ? str : false;
@@ -5995,8 +5995,8 @@
 					 * @plugin contextmenu
 					 * @name context_show.vakata
 					 * @param {jQuery} reference the element that was right clicked
-					 * @param {jQuery} element the DOM element of the menus itself
-					 * @param {Object} position the x & y coordinates of the menus
+					 * @param {jQuery} element the DOM element of the menu itself
+					 * @param {Object} position the x & y coordinates of the menu
 					 */
 					$.vakata.context._trigger("show");
 				}
@@ -6011,8 +6011,8 @@
 					 * @plugin contextmenu
 					 * @name context_hide.vakata
 					 * @param {jQuery} reference the element that was right clicked
-					 * @param {jQuery} element the DOM element of the menus itself
-					 * @param {Object} position the x & y coordinates of the menus
+					 * @param {jQuery} element the DOM element of the menu itself
+					 * @param {Object} position the x & y coordinates of the menu
 					 */
 					$.vakata.context._trigger("hide");
 				}

@@ -5904,7 +5904,7 @@
 				_fnLanguageCompat( oInit.oLanguage );
 			}
 
-			// If the length menus is given, but the init display length is not, use the length menus
+			// If the length menu is given, but the init display length is not, use the length menu
 			if ( oInit.aLengthMenu && ! oInit.iDisplayLength )
 			{
 				oInit.iDisplayLength = $.isArray( oInit.aLengthMenu[0] ) ?
@@ -9283,7 +9283,7 @@
 
 		/**
 		 * This parameter allows you to readily specify the entries in the length drop
-		 * down menus that DataTables shows when pagination is enabled. It can be
+		 * down menu that DataTables shows when pagination is enabled. It can be
 		 * either a 1D array of options which will be used for both the displayed
 		 * option and the value, or a 2D array which will use the array in the first
 		 * position as the value, and the array in the second position as the
@@ -9528,7 +9528,7 @@
 
 		/**
 		 * Allows the end user to select the size of a formatted page from a select
-		 * menus (sizes are 10, 25, 50 and 100). Requires pagination (`paginate`).
+		 * menu (sizes are 10, 25, 50 and 100). Requires pagination (`paginate`).
 		 *  @type boolean
 		 *  @default true
 		 *
@@ -10317,7 +10317,7 @@
 		/**
 		 * Number of rows to display on a single page when using pagination. If
 		 * feature enabled (`lengthChange`) then the end user will be able to override
-		 * this to a custom setting using a pop-up menus.
+		 * this to a custom setting using a pop-up menu.
 		 *  @type int
 		 *  @default 10
 		 *
@@ -10696,7 +10696,7 @@
 
 
 			/**
-			 * Detail the action that will be taken when the drop down menus for the
+			 * Detail the action that will be taken when the drop down menu for the
 			 * pagination length option is changed. The '_MENU_' variable is replaced
 			 * with a default select list of 10, 25, 50 and 100, and can be replaced
 			 * with a custom select box if required.
@@ -12627,7 +12627,7 @@
 		"fnFormatNumber": null,
 
 		/**
-		 * List of options that can be used for the user selectable length menus.
+		 * List of options that can be used for the user selectable length menu.
 		 * Note that this parameter will be set by the initialisation routine. To
 		 * set a default use {@link DataTable.defaults}.
 		 *  @type array

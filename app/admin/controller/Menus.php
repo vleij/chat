@@ -11,8 +11,10 @@ namespace app\admin\controller;
 
 use app\BaseController;
 use think\facade\View;
-use app\common\model\mysql\Menu as MenuModel;
+use app\common\business\Menus as MenusBusiness;
+use app\common\business\Home as HomeBusiness;
 use app\common\model\mysql\AuthRule as AuthRuleModel;
+
 class Menus extends BaseController
 {
     /**
@@ -25,6 +27,10 @@ class Menus extends BaseController
      */
     public function index()
     {
+        $menusB = new MenusBusiness();
+        $homeB= new HomeBusiness();
+        $menu = $menusB->menuList($homeB->menu_assemble());
+        View::assign('menu',$menu);
         return View::fetch();
     }
 
@@ -39,8 +45,8 @@ class Menus extends BaseController
     public function menu_list()
     {
         $get = input('get.');
-        $menu = new MenuModel();
-        $data= $menu->pagingMenu($get['offset'],$get['limit']);
+        $authRule = new AuthRuleModel();
+        $data= $authRule->pagingMenu($get['offset'],$get['limit']);
         return json(['rows'=>$data['data'], 'total'=>$data['total']]);
     }
 
