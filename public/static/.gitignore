@@ -1,3 +1,4 @@
 /runtime/
+!.layui
 !.admin
 !.gitignore
