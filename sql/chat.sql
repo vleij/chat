@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-09-12 19:33:08
+Date: 2020-09-16 19:24:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -39,11 +39,12 @@ CREATE TABLE `c_admin` (
   `update_time` int(10) NOT NULL DEFAULT '0',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1可用0禁用',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='后台用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='后台用户表';
 
 -- ----------------------------
 -- Records of c_admin
 -- ----------------------------
+INSERT INTO `c_admin` VALUES ('1', '0', 'admin', '', '15096141629', '', '', '', '', '0', '', '0', '', '0', '', '0', '0', '1');
 
 -- ----------------------------
 -- Table structure for c_admin_cate
@@ -1189,7 +1190,7 @@ CREATE TABLE `c_admin_menu` (
   KEY `function` (`function`) USING BTREE,
   KEY `is_display` (`is_display`) USING BTREE,
   KEY `type` (`type`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COMMENT='系统菜单表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='系统菜单表';
 
 -- ----------------------------
 -- Records of c_admin_menu
@@ -1207,11 +1208,12 @@ CREATE TABLE `c_auth_group` (
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `rules` char(80) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='用户组表';
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COMMENT='用户组表';
 
 -- ----------------------------
 -- Records of c_auth_group
 -- ----------------------------
+INSERT INTO `c_auth_group` VALUES ('1', '', '1', '1,2');
 
 -- ----------------------------
 -- Table structure for c_auth_group_access
@@ -1228,6 +1230,7 @@ CREATE TABLE `c_auth_group_access` (
 -- ----------------------------
 -- Records of c_auth_group_access
 -- ----------------------------
+INSERT INTO `c_auth_group_access` VALUES ('1', '1');
 
 -- ----------------------------
 -- Table structure for c_auth_rule
@@ -1239,11 +1242,74 @@ CREATE TABLE `c_auth_rule` (
   `title` char(20) NOT NULL DEFAULT '',
   `type` tinyint(1) NOT NULL DEFAULT '1',
   `status` tinyint(1) NOT NULL DEFAULT '1',
-  `condition` char(100) NOT NULL DEFAULT '',
+  `condition` char(100) DEFAULT '',
+  `pid` int(11) DEFAULT '0',
+  `is_display` tinyint(1) DEFAULT '1' COMMENT '是否隐藏 0:隐藏',
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='规则表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='规则表';
 
 -- ----------------------------
 -- Records of c_auth_rule
 -- ----------------------------
+INSERT INTO `c_auth_rule` VALUES ('1', '系统管理', 'admin/sys', '1', '1', '', '0', '1');
+INSERT INTO `c_auth_rule` VALUES ('2', '菜单管理', 'menus/index', '1', '1', '', '1', '1');
+INSERT INTO `c_auth_rule` VALUES ('3', '修改菜单', 'menus/update', '1', '1', '', '2', '1');
+
+-- ----------------------------
+-- Table structure for c_service
+-- ----------------------------
+DROP TABLE IF EXISTS `c_service`;
+CREATE TABLE `c_service` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '客服id',
+  `user_name` varchar(255) NOT NULL COMMENT '客服名称',
+  `user_pwd` varchar(32) NOT NULL COMMENT '客服登录密码',
+  `user_avatar` varchar(255) NOT NULL COMMENT '客服头像',
+  `status` tinyint(1) NOT NULL COMMENT '用户状态',
+  `online` tinyint(1) NOT NULL DEFAULT '2' COMMENT '是否在线',
+  `group_id` int(11) DEFAULT '0' COMMENT '所属分组id',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='客服表';
+
+-- ----------------------------
+-- Records of c_service
+-- ----------------------------
+INSERT INTO `c_service` VALUES ('1', '客服小白', 'cb78913de44f5a36ab63e8ffacde44b0', '/uploads/20171024/902b5294f41f6a7d1e1451c7c0969a21.jpg', '1', '2', '1');
+INSERT INTO `c_service` VALUES ('2', '客服小美', 'cb78913de44f5a36ab63e8ffacde44b0', '/uploads/20171024/43cb54a995b89d0926e1de31af0074fc.jpg', '1', '2', '1');
+
+-- ----------------------------
+-- Table structure for c_user
+-- ----------------------------
+DROP TABLE IF EXISTS `c_user`;
+CREATE TABLE `c_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '客服id',
+  `user_name` varchar(255) NOT NULL COMMENT '用户名称',
+  `user_avatar` varchar(255) NOT NULL COMMENT '用户头像',
+  `status` tinyint(1) NOT NULL COMMENT '用户状态',
+  `online` tinyint(1) NOT NULL DEFAULT '2' COMMENT '是否在线',
+  `group_id` int(11) DEFAULT '0' COMMENT '所属分组id',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户表';
+
+-- ----------------------------
+-- Records of c_user
+-- ----------------------------
+INSERT INTO `c_user` VALUES ('1', '客服小白', '/uploads/20171024/902b5294f41f6a7d1e1451c7c0969a21.jpg', '1', '2', '1');
+INSERT INTO `c_user` VALUES ('2', '客服小美', '/uploads/20171024/43cb54a995b89d0926e1de31af0074fc.jpg', '1', '2', '1');
+
+-- ----------------------------
+-- Table structure for c_ws_groups
+-- ----------------------------
+DROP TABLE IF EXISTS `c_ws_groups`;
+CREATE TABLE `c_ws_groups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '分组id',
+  `name` varchar(255) NOT NULL COMMENT '分组名称',
+  `status` tinyint(1) NOT NULL COMMENT '分组状态',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of c_ws_groups
+-- ----------------------------
+INSERT INTO `c_ws_groups` VALUES ('1', '售前组', '1');
+INSERT INTO `c_ws_groups` VALUES ('2', '售后组', '1');
