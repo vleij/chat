@@ -37,10 +37,10 @@ class Events
      */
     public static function onConnect($client_id)
     {
-        // 向当前client_id发送数据 
-        Gateway::sendToClient($client_id, "Hello $client_id\r\n");
-        // 向所有人发送
-        Gateway::sendToAll("$client_id login\r\n");
+//        // 向当前client_id发送数据
+//        Gateway::sendToClient($client_id, "Hello $client_id\r\n");
+//        // 向所有人发送
+//        Gateway::sendToAll("$client_id login\r\n");
     }
     
    /**
@@ -58,7 +58,6 @@ class Events
                //新客服
                if(!isset($serviceList[$message['group']]) || !array_key_exists($message['service_id'], $serviceList[$message['group']])){
                    self::$global_queue->serviceList = $message;
-                   var_dump(self::$global_queue);
                     Gateway::bindUid($client_id,$message['service_id']);
                }else{
                    //已在内存中客服
@@ -66,7 +65,7 @@ class Events
                break;
            case 'user_init';
                Gateway::bindUid($client_id,$message['user_id']);
-               self::informOnlineTask($client_id,$message['user_id']);
+               self::informOnlineTask($client_id,$message);
                break;
            case 'server_chat':
 
@@ -89,29 +88,38 @@ class Events
        GateWay::sendToAll("$client_id logout\r\n");
    }
 
-   public static function informOnlineTask($client_id,$user_id)
+   public static function informOnlineTask($client_id,$message)
    {
        // 通知会员发送信息绑定客服的id
        $serviceList = self::$global_queue->serviceList;
-       var_dump($serviceList);die;
+
        $noticeUser = [
-           'message_type' => 'connect',
+           'message_type' => 'addUser',
            'data' => [
-               'kf_id' => $res['data']['0'],
-               'kf_name' => $res['data']['1']
+               'id' => $serviceList['service_id'],
+               'username' => $serviceList['name'],
+               'type' =>'friend',
+               'avatar'=>$serviceList['avatar'],
+               'groupid'  => 1,
+               'sign'     => '555'
            ]
        ];
-       Gateway::sendToClient($res['data']['3']['client_id'], json_encode($noticeUser));
+       Gateway::sendToClient($client_id, json_encode($noticeUser));
        unset($noticeUser);
 
        // 通知客服端绑定会员的信息
        $noticeKf = [
            'message_type' => 'connect',
            'data' => [
-               'user_info' => $res['data']['3']
+               'user_info' => [
+                   'id'=>$message['user_id'],
+                   'name'=>$message['name'],
+                   'avatar'=>$message['avatar'],
+                   'ip'=>$_SERVER['REMOTE_ADDR'],
+               ]
            ]
        ];
-       Gateway::sendToClient($res['data']['2'], json_encode($noticeKf));
+       Gateway::sendToUid($serviceList['service_id'], json_encode($noticeKf));
        unset($noticeKf);
    }
 }

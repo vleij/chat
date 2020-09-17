@@ -25,10 +25,8 @@ return [
     //模板参数替换
     'tpl_replace_string' => [
         '__CSS__' => '/static/admin/css',
-        '__ADMIN__' => '/static/admin',
         '__JS__'  => '/static/admin/js',
         '__IMG__' => '/static/admin/img',
-        '__ICO__' => '/static/admin/ico',
-        '__LAYUI__' => '/static/layui',
+        '__LAYUI__' => '/static/index/layui',
     ],
 ];

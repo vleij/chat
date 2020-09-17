@@ -8,7 +8,7 @@
     <script src="__JS__/jquery.min.js"></script>
     <script src="__LAYUI__/layui.js"></script>
 </head>
-<body style="background: url(/static/admin/images/irongrip.png) repeat">
+<body >
 
 <script type="text/javascript">
     //localStorage.clear();
@@ -18,13 +18,13 @@
 
             //获取主面板列表信息
             init: {
-
-                type: 'get' //默认get，一般可不填
+                url: "{:url('./getList')}"//接口地址（返回的数据格式见下文）
+                ,type: 'get' //默认get，一般可不填
                 ,data: {} //额外参数
             }
             //获取群员接口
             ,members: {
-                url: "{:url('index/getMembers')}" //接口地址（返回的数据格式见下文）
+                url: "{:url('./getMembers')}" //接口地址（返回的数据格式见下文）
                 ,type: 'get' //默认get，一般可不填
                 ,data: {} //额外参数
             },
@@ -52,15 +52,16 @@
         socket.onopen = function(){
             // 登录
 
-            var login_data = '{"type":"user_init", "user_id":"1509641629", "name" : "秀秀", "avatar" : "", "group": }';
-            //console.log( login_data );
+            var login_data = '{"type":"user_init", "user_id":"1509641629", "name" : "秀秀", "avatar" : "/static/index/images/1.jpg", "group": ""}';
+            socket.send( login_data );
             console.log("websocket握手成功!");
         };
 
         //监听收到的消息
         socket.onmessage = function(res){
-            //console.log(res.data);
             var data = eval("("+res.data+")");
+            console.log(data.data);
+            console.log(55);
             switch(data['message_type']){
                 // 服务端ping客户端
                 case 'ping':

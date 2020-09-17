@@ -2,7 +2,7 @@
 
  @Name：layui.flow 流加载
  @Author：贤心
- @License：LGPL
+ @License：MIT
     
  */
  
@@ -10,7 +10,7 @@
 layui.define('jquery', function(exports){
   "use strict";
   
-  var $ = layui.jquery, Flow = function(options){}
+  var $ = layui.$, Flow = function(options){}
   ,ELEM_MORE = 'layui-flow-more'
   ,ELEM_LOAD = '<i class="layui-anim layui-anim-rotate layui-anim-loop layui-icon ">&#xe63e;</i>';
 

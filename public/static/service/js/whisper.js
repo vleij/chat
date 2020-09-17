@@ -25,7 +25,7 @@ socket.onopen = function (res) {
 // 监听消息
 socket.onmessage = function (res) {
     var data = eval("(" + res.data + ")");
-	
+	console.log(data)
     switch (data['message_type']) {
         // 服务端ping客户端
         case 'ping':
