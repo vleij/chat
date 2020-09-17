@@ -52,7 +52,7 @@
         socket.onopen = function(){
             // 登录
 
-            socket.send( '555' );
+            var login_data = '{"type":"user_init", "user_id":"1509641629", "name" : "秀秀", "avatar" : "", "group": }';
             //console.log( login_data );
             console.log("websocket握手成功!");
         };
@@ -124,7 +124,7 @@
                 var mine = JSON.stringify(res.mine);
                 var to = JSON.stringify(res.to);
                 var login_data = '{"type":"chatMessage","data":{"mine":'+mine+', "to":'+to+'}}';
-                socket.send( '44' );
+                socket.send( login_data );
 
             });
         });
