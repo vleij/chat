@@ -1086,6 +1086,38 @@
         ]
     },
     {
+        "name": "workerman/globaldata",
+        "version": "v1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/walkor/GlobalData.git",
+            "reference": "baf3b7af338f329e88136ebe92266dfe40dd00a7"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/walkor/GlobalData/zipball/baf3b7af338f329e88136ebe92266dfe40dd00a7",
+            "reference": "baf3b7af338f329e88136ebe92266dfe40dd00a7",
+            "shasum": ""
+        },
+        "require": {
+            "workerman/workerman": ">=3.3.0"
+        },
+        "time": "2018-08-16T03:59:34+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "GlobalData\\": "./src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "homepage": "http://www.workerman.net"
+    },
+    {
         "name": "workerman/workerman",
         "version": "v4.0.9",
         "version_normalized": "4.0.9.0",

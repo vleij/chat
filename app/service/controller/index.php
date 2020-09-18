@@ -11,6 +11,7 @@ class index
 {
     public function index()
     {
+
         View::assign('status',1);
         View::assign('word',1);
         return View::fetch();

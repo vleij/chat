@@ -28,10 +28,13 @@ define('GLOBAL_START', 1);
 
 require_once __DIR__ . '/vendor/autoload.php';
 
+
 // 加载所有Applications/*/kernel.php，以便启动所有服务
 foreach(glob(__DIR__ . '../kernel/start*.php') as $start_file)
 {
     require_once $start_file;
 }
+// 全局共享组件
+$worker = new GlobalData\Server('127.0.0.1', 2207);
 // 运行所有服务
 Worker::runAll();

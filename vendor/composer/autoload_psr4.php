@@ -24,5 +24,6 @@ return array(
     'Opis\\Closure\\' => array($vendorDir . '/opis/closure/src'),
     'League\\Flysystem\\Cached\\' => array($vendorDir . '/league/flysystem-cached-adapter/src'),
     'League\\Flysystem\\' => array($vendorDir . '/league/flysystem/src'),
+    'GlobalData\\' => array($vendorDir . '/workerman/globaldata/src'),
     'GatewayWorker\\' => array($vendorDir . '/workerman/gateway-worker/src'),
 );

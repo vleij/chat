@@ -60,6 +60,7 @@ class ComposerStaticInit1ca2667a11fca9463a43fa353e8ece05
         ),
         'G' => 
         array (
+            'GlobalData\\' => 11,
             'GatewayWorker\\' => 14,
         ),
     );
@@ -139,6 +140,10 @@ class ComposerStaticInit1ca2667a11fca9463a43fa353e8ece05
         'League\\Flysystem\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
+        ),
+        'GlobalData\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/globaldata/src',
         ),
         'GatewayWorker\\' => 
         array (

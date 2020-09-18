@@ -1,0 +1,289 @@
+2020-09-18 09:28:58 pid:1 Error: Class 'Db' not found in D:\phpstudy_pro\WWW\chat\kernel\Events.php:62
+Stack trace:
+#0 [internal function]: Events::onMessage('7f0000010b54000...', '{"type":"init",...')
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"init",...')
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #32)
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#9 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#10 {main}
+2020-09-18 09:28:58 pid:1 Worker process terminated
+2020-09-18 11:00:52 pid:1 Error: Access to undeclared static property: Events::$global in D:\phpstudy_pro\WWW\chat\kernel\Events.php:37
+Stack trace:
+#0 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2397): GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#7 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#8 {main}
+2020-09-18 11:00:53 pid:1 Worker process terminated
+2020-09-18 11:00:54 pid:1 Error: Access to undeclared static property: Events::$global in D:\phpstudy_pro\WWW\chat\kernel\Events.php:37
+Stack trace:
+#0 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2397): GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#7 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#8 {main}
+2020-09-18 11:00:55 pid:1 Worker process terminated
+2020-09-18 11:00:56 pid:1 Error: Access to undeclared static property: Events::$global in D:\phpstudy_pro\WWW\chat\kernel\Events.php:37
+Stack trace:
+#0 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2397): GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#7 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#8 {main}
+2020-09-18 11:00:57 pid:1 Worker process terminated
+2020-09-18 11:00:58 pid:1 Error: Access to undeclared static property: Events::$global in D:\phpstudy_pro\WWW\chat\kernel\Events.php:37
+Stack trace:
+#0 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2397): GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#7 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#8 {main}
+2020-09-18 11:00:59 pid:1 Worker process terminated
+2020-09-18 11:01:59 pid:1 Error: Access to undeclared static property: Events::$global in D:\phpstudy_pro\WWW\chat\kernel\Events.php:37
+Stack trace:
+#0 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2397): GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#7 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#8 {main}
+2020-09-18 11:02:00 pid:1 Worker process terminated
+2020-09-18 11:02:01 pid:1 Error: Access to undeclared static property: Events::$global in D:\phpstudy_pro\WWW\chat\kernel\Events.php:37
+Stack trace:
+#0 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2397): GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#7 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#8 {main}
+2020-09-18 11:02:02 pid:1 Worker process terminated
+2020-09-18 11:11:32 pid:1 Error: Class 'GlobalData\Client' not found in D:\phpstudy_pro\WWW\chat\kernel\Events.php:35
+Stack trace:
+#0 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2397): GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#7 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#8 {main}
+2020-09-18 11:11:33 pid:1 Worker process terminated
+2020-09-18 11:11:34 pid:1 Error: Class 'GlobalData\Client' not found in D:\phpstudy_pro\WWW\chat\kernel\Events.php:35
+Stack trace:
+#0 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2397): GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#7 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#8 {main}
+2020-09-18 11:29:30 pid:1 Error: Access to undeclared static property: Events::$global_queue in D:\phpstudy_pro\WWW\chat\kernel\Events.php:68
+Stack trace:
+#0 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#1 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"init",...')
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#9 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#10 {main}
+2020-09-18 11:29:30 pid:1 Worker process terminated
+2020-09-18 11:30:54 pid:1 Exception: 由于目标计算机积极拒绝，无法连接。
+ in D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php:69
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php(138): GlobalData\Client->getConnection('serviceList')
+#1 D:\phpstudy_pro\WWW\chat\kernel\Events.php(68): GlobalData\Client->__get('serviceList')
+#2 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"init",...')
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#10 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#11 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#12 {main}
+2020-09-18 11:30:54 pid:1 Worker process terminated
+2020-09-18 11:31:40 pid:1 Exception: 由于目标计算机积极拒绝，无法连接。
+ in D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php:69
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php(138): GlobalData\Client->getConnection('serviceList')
+#1 D:\phpstudy_pro\WWW\chat\kernel\Events.php(68): GlobalData\Client->__get('serviceList')
+#2 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"init",...')
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#10 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#11 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#12 {main}
+2020-09-18 11:31:40 pid:1 Worker process terminated
+2020-09-18 15:03:39 pid:1 Exception: 由于目标计算机积极拒绝，无法连接。
+ in D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php:69
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php(138): GlobalData\Client->getConnection('serviceList')
+#1 D:\phpstudy_pro\WWW\chat\kernel\Events.php(73): GlobalData\Client->__get('serviceList')
+#2 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"init",...')
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#10 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#11 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#12 {main}
+2020-09-18 15:03:39 pid:1 Worker process terminated
+2020-09-18 15:05:40 pid:1 Exception: 由于目标计算机积极拒绝，无法连接。
+ in D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php:69
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php(138): GlobalData\Client->getConnection('serviceList')
+#1 D:\phpstudy_pro\WWW\chat\kernel\Events.php(73): GlobalData\Client->__get('serviceList')
+#2 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"init",...')
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#10 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#11 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#12 {main}
+2020-09-18 15:05:40 pid:1 Worker process terminated
+2020-09-18 15:09:04 pid:1 Exception: 由于目标计算机积极拒绝，无法连接。
+ in D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php:69
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php(138): GlobalData\Client->getConnection('serviceList')
+#1 D:\phpstudy_pro\WWW\chat\kernel\Events.php(73): GlobalData\Client->__get('serviceList')
+#2 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"init",...')
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#10 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#11 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#12 {main}
+2020-09-18 15:09:04 pid:1 Worker process terminated
+2020-09-18 15:09:22 pid:1 Exception: 由于目标计算机积极拒绝，无法连接。
+ in D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php:69
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php(138): GlobalData\Client->getConnection('serviceList')
+#1 D:\phpstudy_pro\WWW\chat\kernel\Events.php(73): GlobalData\Client->__get('serviceList')
+#2 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"init",...')
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#10 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#11 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#12 {main}
+2020-09-18 15:09:22 pid:1 Worker process terminated
+2020-09-18 15:10:11 pid:1 Exception: 由于目标计算机积极拒绝，无法连接。
+ in D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php:69
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php(138): GlobalData\Client->getConnection('serviceList')
+#1 D:\phpstudy_pro\WWW\chat\kernel\Events.php(73): GlobalData\Client->__get('serviceList')
+#2 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"init",...')
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#10 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#11 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#12 {main}
+2020-09-18 15:10:11 pid:1 Worker process terminated
+2020-09-18 15:25:28 pid:1 Gateway: Worker->name conflict. Key:127.0.0.1:LsdBusinessWorker:0
+2020-09-18 17:02:39 pid:1 Worker process terminated
+2020-09-18 18:10:56 pid:1 Error: Access to undeclared static property: Events::$globalQueue in D:\phpstudy_pro\WWW\chat\kernel\Events.php:150
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\kernel\Events.php(125): Events::informOnlineTask('7f0000010b54000...', '1')
+#1 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"user_i...')
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#10 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#11 {main}
+2020-09-18 18:10:56 pid:1 Worker process terminated
+2020-09-18 18:15:42 pid:1 Error: Access to undeclared static property: Events::$globalQueue in D:\phpstudy_pro\WWW\chat\kernel\Events.php:151
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\kernel\Events.php(126): Events::informOnlineTask('7f0000010b54000...', '1')
+#1 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"user_i...')
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #33)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#10 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#11 {main}
+2020-09-18 18:15:43 pid:1 Worker process terminated
+2020-09-18 18:20:30 pid:1 Error: Access to undeclared static property: Events::$globalQueue in D:\phpstudy_pro\WWW\chat\kernel\Events.php:151
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\kernel\Events.php(126): Events::informOnlineTask('7f0000010b54000...', '1')
+#1 [internal function]: Events::onMessage('7f0000010b54000...', Array)
+#2 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(404): call_user_func('Events::onMessa...', '7f0000010b54000...', '{"type":"user_i...')
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Connection\TcpConnection.php(660): GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Events\Select.php(293): Workerman\Connection\TcpConnection->baseRead(Resource id #34)
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2412): Workerman\Events\Select->loop()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#9 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#10 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#11 {main}
+2020-09-18 18:20:30 pid:1 Worker process terminated

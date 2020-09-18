@@ -493,7 +493,7 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
   //显示聊天面板
   var layimChat, layimMin, chatIndex, To = {}, popchat = function(data){
     data = data || {};
-    
+
     var chat = $('#layui-layim-chat'), render = {
       data: data
       ,base: cache.base
@@ -617,7 +617,7 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
       ,shade: false
       ,closeBtn: false
       ,anim: thatChat.shift || 2
-      ,offset: 'b'
+      ,offset: 'r'
       ,move: '#layui-layim-min img'
       ,resize: false
       ,area: ['182px', '50px']
@@ -718,7 +718,7 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
     var local = layui.data('layim')[cache.mine.id] || {};
     var obj = {}, history = local.history || {};
     var is = history[data.type + data.id];
-    
+
     if(!layimMain) return;
     
     var historyElem = layimMain.find('.layim-list-history');
@@ -899,60 +899,9 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
     });
     chatListMore();
   };
-  var layimMain, popim = function(content){
-    return layer.open({
-      type: 1
-      ,area: ['260px', '520px']
-      ,skin: 'layui-box layui-layim'
-      ,title: '&#8203;'
-      ,offset: 'rb'
-      ,id: 'layui-layim'
-      ,shade: false
-      ,anim: 2
-      ,resize: false
-      ,content: content
-      ,success: function(layero){
-        var local = layui.data('layim')[cache.mine.id] || {}, skin = local.skin;
 
-        layimMain = layero;
-        layimMain.css({
-          'background-image': skin ? 'url('+ skin +')' : 'none'
-        });
-        if(cache.base.right){
-          layero.css('margin-left', '-' + cache.base.right);
-        }
-        if(layimClose){
-          layer.close(layimClose.attr('times'));
-        }
-
-        //按最新会话重新排列
-        var arr = [], historyElem = layero.find('.layim-list-history');
-        historyElem.find('li').each(function(){
-          arr.push($(this).prop('outerHTML'))
-        });
-        if(arr.length > 0){
-          arr.reverse();
-          historyElem.html(arr.join(''));
-        }
-
-        banRightMenu();
-      }
-      ,cancel: function(index){
-        popmin();
-        var local = layui.data('layim')[cache.mine.id] || {};
-        local.close = true;
-        layui.data('layim', {
-          key: cache.mine.id
-          ,value: local
-        });
-        return false;
-      }
-    });
-  };
   //添加好友或群
   var addList = function(data){
-
-    console.log(layimMain)
     var listElem = layimMain.find('.layim-list-'+ data.type);
     var obj = {}, has;
     if(cache[data.type]){

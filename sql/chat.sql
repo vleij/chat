@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-09-16 19:24:54
+Date: 2020-09-18 19:56:48
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -1257,6 +1257,64 @@ INSERT INTO `c_auth_rule` VALUES ('2', '菜单管理', 'menus/index', '1', '1', 
 INSERT INTO `c_auth_rule` VALUES ('3', '修改菜单', 'menus/update', '1', '1', '', '2', '1');
 
 -- ----------------------------
+-- Table structure for c_chatgroup
+-- ----------------------------
+DROP TABLE IF EXISTS `c_chatgroup`;
+CREATE TABLE `c_chatgroup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '群组id',
+  `groupname` varchar(155) NOT NULL COMMENT '群组名称',
+  `avatar` varchar(155) DEFAULT NULL COMMENT '群组头像',
+  `owner_name` varchar(155) DEFAULT NULL COMMENT '群主名称',
+  `owner_id` int(11) DEFAULT NULL COMMENT '群主id',
+  `owner_avatar` varchar(155) DEFAULT NULL COMMENT '群主头像',
+  `owner_sign` varchar(155) DEFAULT NULL COMMENT '群主签名',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of c_chatgroup
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for c_chatuser
+-- ----------------------------
+DROP TABLE IF EXISTS `c_chatuser`;
+CREATE TABLE `c_chatuser` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(155) DEFAULT NULL,
+  `pwd` varchar(155) DEFAULT NULL COMMENT '密码',
+  `groupid` int(5) DEFAULT NULL COMMENT '所属的分组id',
+  `status` varchar(55) DEFAULT NULL,
+  `sign` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of c_chatuser
+-- ----------------------------
+INSERT INTO `c_chatuser` VALUES ('1', '纸飞机', '21232f297a57a5a743894a0e4a801fc3', '2', 'outline', '在深邃的编码世界，做一枚轻盈的纸飞机', 'http://cdn.firstlinkapp.com/upload/2016_6/1465575923433_33812.jpg');
+INSERT INTO `c_chatuser` VALUES ('2', '马云', '21232f297a57a5a743894a0e4a801fc3', '2', 'online', '让天下没有难写的代码', 'http://tp4.sinaimg.cn/2145291155/180/5601307179/1');
+INSERT INTO `c_chatuser` VALUES ('3', '罗玉凤', '21232f297a57a5a743894a0e4a801fc3', '3', 'online', '在自己实力不济的时候，不要去相信什么媒体和记者。他们不是善良的人，有时候候他们的采访对当事人而言就是陷阱', 'http://tp1.sinaimg.cn/1241679004/180/5743814375/0');
+INSERT INTO `c_chatuser` VALUES ('13', '雷佳', '4297f44b13955235245b2497399d7a93', '1', 'online', '前端就是这么牛', 'http://tp1.sinaimg.cn/1241679004/180/5743814375/0');
+
+-- ----------------------------
+-- Table structure for c_groupdetail
+-- ----------------------------
+DROP TABLE IF EXISTS `c_groupdetail`;
+CREATE TABLE `c_groupdetail` (
+  `userid` int(11) NOT NULL,
+  `username` varchar(155) NOT NULL,
+  `useravatar` varchar(155) NOT NULL,
+  `usersign` varchar(155) NOT NULL,
+  `groupid` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of c_groupdetail
+-- ----------------------------
+
+-- ----------------------------
 -- Table structure for c_service
 -- ----------------------------
 DROP TABLE IF EXISTS `c_service`;
@@ -1276,26 +1334,6 @@ CREATE TABLE `c_service` (
 -- ----------------------------
 INSERT INTO `c_service` VALUES ('1', '客服小白', 'cb78913de44f5a36ab63e8ffacde44b0', '/uploads/20171024/902b5294f41f6a7d1e1451c7c0969a21.jpg', '1', '2', '1');
 INSERT INTO `c_service` VALUES ('2', '客服小美', 'cb78913de44f5a36ab63e8ffacde44b0', '/uploads/20171024/43cb54a995b89d0926e1de31af0074fc.jpg', '1', '2', '1');
-
--- ----------------------------
--- Table structure for c_user
--- ----------------------------
-DROP TABLE IF EXISTS `c_user`;
-CREATE TABLE `c_user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '客服id',
-  `user_name` varchar(255) NOT NULL COMMENT '用户名称',
-  `user_avatar` varchar(255) NOT NULL COMMENT '用户头像',
-  `status` tinyint(1) NOT NULL COMMENT '用户状态',
-  `online` tinyint(1) NOT NULL DEFAULT '2' COMMENT '是否在线',
-  `group_id` int(11) DEFAULT '0' COMMENT '所属分组id',
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户表';
-
--- ----------------------------
--- Records of c_user
--- ----------------------------
-INSERT INTO `c_user` VALUES ('1', '客服小白', '/uploads/20171024/902b5294f41f6a7d1e1451c7c0969a21.jpg', '1', '2', '1');
-INSERT INTO `c_user` VALUES ('2', '客服小美', '/uploads/20171024/43cb54a995b89d0926e1de31af0074fc.jpg', '1', '2', '1');
 
 -- ----------------------------
 -- Table structure for c_ws_groups

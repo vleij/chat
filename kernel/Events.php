@@ -28,7 +28,25 @@ use \GatewayWorker\Lib\Gateway;
  */
 class Events
 {
-    public static $global_queue;
+    //静态成员存储客服与客户列表
+    public static $globalSc = null;
+
+    public static function onWorkerStart($worker)
+    {
+
+        if (empty(self::$globalSc)) {
+            self::$globalSc = new \GlobalData\Client('127.0.0.1:2207');
+            // 客服列表
+            if(is_null(self::$globalSc->serviceList)){
+                self::$globalSc->serviceList = [];
+            }
+
+            // 会员列表[动态的，这里面只是目前未被分配的会员信息]
+            if(is_null(self::$globalSc->userList)){
+                self::$globalSc->userList = [];
+            }
+        }
+    }
     /**
      * 当客户端连接时触发
      * 如果业务不需此回调可以删除onConnect
@@ -54,24 +72,63 @@ class Events
        switch ($message['type']) {
            //客服初始
            case 'init':
-               $serviceList = self::$global_queue->serviceList;
+               $serviceList = self::$globalSc->serviceList;
                //新客服
                if(!isset($serviceList[$message['group']]) || !array_key_exists($message['service_id'], $serviceList[$message['group']])){
-                   self::$global_queue->serviceList = $message;
-                    Gateway::bindUid($client_id,$message['service_id']);
-               }else{
+                   #self::$globalQueue->serviceList = $message;
+                   do{
+                       $newServiceList = $serviceList;
+                       $newServiceList[$message['group']][$message['service_id']] = [
+                           'id' => $message['service_id'],
+                           'name' => $message['name'],
+                           'avatar' => $message['avatar'],
+                           'client_id' => $client_id,
+                           'task' => 0,
+                           'user_info' => []
+                       ];
+                   }while(!self::$globalSc->cas('serviceList', $serviceList, $newServiceList));
+                   unset($newServiceList, $serviceList);
+               }else if(isset($serviceList[$message['group']][$message['service_id']])){
                    //已在内存中客服
+                   do{
+                       $newServiceList = $serviceList;
+                       $newServiceList[$message['group']][$message['service_id']]['client_id'] = $client_id;
+                   }while(!self::$globalSc->cas('serviceList', $serviceList, $newServiceList));
+                   unset($newServiceList, $serviceList);
                }
+               //客服id绑定客户端id（每个ws连接都有一个唯一的客户端id,不管是用户还是客服连接）
+               Gateway::bindUid($client_id,$message['service_id']);
                break;
            case 'user_init';
-               Gateway::bindUid($client_id,$message['user_id']);
-               self::informOnlineTask($client_id,$message);
-               break;
-           case 'server_chat':
+               $userList = self::$globalSc->userList;
+               // 如果该顾客未在内存中记录则记录
+               if(!array_key_exists($message['user_id'], $userList)){
+                   do{
+                       $NewUserList = $userList;
+                       $NewUserList[$message['user_id']] = [
+                           'user_id' => $message['user_id'],
+                           'name' => $message['name'],
+                           'avatar' => $message['avatar'],
+                           'ip' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '',
+                           'group' => $message['group'],
+                           'client_id' => $client_id
+                       ];
 
+                   }while(!self::$globalSc->cas('userList', $userList, $NewUserList));
+                   unset($NewUserList, $userList);
+                   $exist = 0;
+               }else{
+                   $exist = 1;
+               }
+               // 绑定 client_id 和 user_id（uid）
+               Gateway::bindUid($client_id,$message['user_id']);
+                // 尝试分配新客户进入服务
+               self::informOnlineTask($client_id,$message['group'],$exist);
                break;
-           case 'user_chat':
-               Gateway::sendToUid();
+           case 'chatMessage':
+
+               $client = Gateway::getClientIdByUid($message['data']['to_id']);
+               var_dump($client);
                break;
        }
         // 向所有人发送 
@@ -88,38 +145,44 @@ class Events
        GateWay::sendToAll("$client_id logout\r\n");
    }
 
-   public static function informOnlineTask($client_id,$message)
+   public static function informOnlineTask($client_id,$group,$exist)
    {
-       // 通知会员发送信息绑定客服的id
-       $serviceList = self::$global_queue->serviceList;
+       //客服列表
+       $serviceList = self::$globalSc->serviceList;
+       //用户列表
+       $userList = self::$globalSc->userList;
+
+       //将一个元素移出(数组开头)
+       $service = array_shift($serviceList[$group]);
+
+       $user = array_shift($userList);
 
        $noticeUser = [
-           'message_type' => 'addUser',
+           'message_type' => 'connect',
            'data' => [
-               'id' => $serviceList['service_id'],
-               'username' => $serviceList['name'],
-               'type' =>'friend',
-               'avatar'=>$serviceList['avatar'],
-               'groupid'  => 1,
-               'sign'     => '555'
+               'service_id' => $service['id'],
+               'service_name' => $service['name'],
            ]
        ];
+       // 通知会员发送信息绑定客服的id
        Gateway::sendToClient($client_id, json_encode($noticeUser));
        unset($noticeUser);
 
-       // 通知客服端绑定会员的信息
-       $noticeKf = [
-           'message_type' => 'connect',
-           'data' => [
-               'user_info' => [
-                   'id'=>$message['user_id'],
-                   'name'=>$message['name'],
-                   'avatar'=>$message['avatar'],
-                   'ip'=>$_SERVER['REMOTE_ADDR'],
+       if(empty($exist)) {
+           // 通知客服端绑定会员的信息
+           $noticeKf = [
+               'message_type' => 'connect',
+               'data' => [
+                   'user_info' => [
+                       'id' => $user['user_id'],
+                       'name' => $user['name'],
+                       'avatar' => $user['avatar'],
+                       'ip' => $_SERVER['REMOTE_ADDR'],
+                   ]
                ]
-           ]
-       ];
-       Gateway::sendToUid($serviceList['service_id'], json_encode($noticeKf));
-       unset($noticeKf);
+           ];
+           Gateway::sendToClient($service['client_id'], json_encode($noticeKf));
+           unset($noticeKf);
+       }
    }
 }
