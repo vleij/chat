@@ -29,5 +29,7 @@ return [
         '__JS__'  => '/static/service/js',
         '__IMG__' => '/static/admin/img',
         '__ICO__' => '/static/admin/ico',
+        '__COMMONCSS__' => '/static/common/css',
+        '__COMMONJS__'  => '/static/common/js',
     ],
 ];

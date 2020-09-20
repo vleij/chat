@@ -116,19 +116,30 @@ class Events
 
                    }while(!self::$globalSc->cas('userList', $userList, $NewUserList));
                    unset($NewUserList, $userList);
-                   $exist = 0;
-               }else{
-                   $exist = 1;
                }
                // 绑定 client_id 和 user_id（uid）
                Gateway::bindUid($client_id,$message['user_id']);
                 // 尝试分配新客户进入服务
-               self::informOnlineTask($client_id,$message['group'],$exist);
+               self::informOnlineTask($client_id,$message['group']);
                break;
            case 'chatMessage':
+               $client = Gateway::getClientIdByUid($message['data']['to']['id']);
+               if(!empty($client)) {
+                   $chat_message = [
+                       'message_type' => 'chatMessage',
+                       'data' => [
+                           'name' => $message['data']['mine']['username'],
+                           'avatar' => $message['data']['mine']['avatar'],
+                           'id' => $message['data']['mine']['id'],
+                           'time' => date('H:i'),
+                           'type' => empty($message['data']['mine']['type'])?'':$message['data']['mine']['type'],
+                           'content' => htmlspecialchars($message['data']['mine']['content']),
+                       ]
+                   ];
+                   Gateway::sendToClient($client['0'], json_encode($chat_message));
 
-               $client = Gateway::getClientIdByUid($message['data']['to_id']);
-               var_dump($client);
+                   unset($chat_message);
+               }
                break;
        }
         // 向所有人发送 
@@ -142,10 +153,10 @@ class Events
    public static function onClose($client_id)
    {
        // 向所有人发送 
-       GateWay::sendToAll("$client_id logout\r\n");
+       /*GateWay::sendToAll("$client_id logout\r\n");*/
    }
 
-   public static function informOnlineTask($client_id,$group,$exist)
+   public static function informOnlineTask($client_id,$group)
    {
        //客服列表
        $serviceList = self::$globalSc->serviceList;
@@ -168,7 +179,6 @@ class Events
        Gateway::sendToClient($client_id, json_encode($noticeUser));
        unset($noticeUser);
 
-       if(empty($exist)) {
            // 通知客服端绑定会员的信息
            $noticeKf = [
                'message_type' => 'connect',
@@ -183,6 +193,6 @@ class Events
            ];
            Gateway::sendToClient($service['client_id'], json_encode($noticeKf));
            unset($noticeKf);
-       }
+
    }
 }

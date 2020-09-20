@@ -7,6 +7,7 @@
 
     <script src="__JS__/jquery.min.js"></script>
     <script src="__LAYUI__/layui.js"></script>
+
 </head>
 <body >
 
@@ -53,7 +54,7 @@
         socket.onopen = function(){
             // 登录
 
-            var login_data = '{"type":"user_init", "user_id":"1509641629", "name" : "秀秀", "avatar" : "/static/index/images/1.jpg", "group": "1"}';
+            var login_data = '{"type":"user_init", "user_id":"1509641629", "name" : "临时会话", "avatar" : "/static/index/images/1.jpg", "group": "1"}';
             socket.send( login_data );
             console.log("websocket握手成功!");
         };
@@ -77,6 +78,13 @@
                     console.log(service)
                     //自定义客服窗口
                     layim.config({
+                        //我的信息
+                        "mine": {
+                            "username": " 秀秀" //我的昵称
+                            ,"id": "1509641629" //我的ID
+                            ,"status": "online" //在线状态 online：在线、hide：隐身
+                            ,"avatar": "/static/index/images/1.jpg" //我的头像
+                        },
                         brief: true //简约模式，不显示主面板
                     }).chat({
                         name: '在线客服二' //名称
@@ -84,6 +92,7 @@
                         ,avatar: 'http://tp1.sinaimg.cn/5619439268/180/40030060651/1' //头像
                         ,id: service['service_id'] //定义唯一的id方便你处理信息
                     });
+
                     layim.setChatMin(); //收缩聊天面板
                     break;
                 // 检测聊天数据

@@ -290,8 +290,9 @@ function sendMessage(sendMsg) {
 
     socket.send(JSON.stringify({
         type: 'chatMessage',
-        data: {to_id: uid, to_name: uname, content: msg, from_name: uinfo.username,
-            from_id: uinfo.id, from_avatar: uinfo.avatar}
+        data: {'to':{id: uid, name: uname}, 'mine':{username: uinfo.username,
+            id: uinfo.id, avatar: uinfo.avatar, content: msg, 'type': 'service'}}
+
     }));
 
     $("#u-" + uid).append(word);
@@ -372,7 +373,17 @@ function changeUserTab(obj) {
 
 // 添加用户到面板
 function addUser(data) {
-
+    var repetition = '';
+    $("#user_list li").each(function(){
+        var id = this.getAttribute("data-id")
+        if(data.id == id){
+            repetition = '1';
+            return
+        }
+    });
+    if(repetition){
+        return
+    }
     var _html = '<li class="layui-nav-item" data-id="' + data.id + '" id="f-' + data.id +
         '" data-name="' + data.name + '" data-avatar="' + data.avatar + '" data-ip="' + data.ip + '">';
     _html += '<img src="' + data.avatar + '">';

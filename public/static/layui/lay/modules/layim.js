@@ -752,6 +752,7 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
       ,id: cache.mine ? cache.mine.id : null
       ,mine: true
     };
+
     var thatChat = thisChat(), ul = thatChat.elem.find('.layim-chat-main ul');
     var maxLength = cache.base.maxLength || 3000;
     data.content = thatChat.textarea.val();

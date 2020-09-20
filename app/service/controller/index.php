@@ -7,11 +7,11 @@
  */
 namespace app\service\controller;
 use think\facade\View;
-class index
+class index extends Base
 {
+
     public function index()
     {
-
         View::assign('status',1);
         View::assign('word',1);
         return View::fetch();
