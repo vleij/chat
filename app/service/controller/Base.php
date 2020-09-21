@@ -9,7 +9,9 @@
 namespace app\service\controller;
 
 
-class Base
+use app\BaseController;
+
+class Base extends BaseController
 {
     protected $middleware = [\app\service\middleware\ServiceCheck::class];
 }
