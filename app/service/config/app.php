@@ -31,4 +31,6 @@ return [
     'show_error_msg'   => true,
 
     'auto_multi_app'   => true,
+    //盐值
+    'salt' => 'ServIceYmkClsw46y7b8C5qN56zs'
 ];

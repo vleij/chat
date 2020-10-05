@@ -8,6 +8,7 @@
 namespace app\common\business;
 use app\common\model\mysql\AuthGroup as AuthGroupModel;
 use app\common\model\mysql\AuthRule as AuthRuleModel;
+use think\facade\Request;
 class Home
 {
     /**
@@ -66,8 +67,9 @@ class Home
         $permissions = $authGroup->getRules($admin_cate);
         $permissions = explode(',',$permissions);
         $possess_rule = [];
+
         foreach ($menu as $k => $val) {
-            if($val['type'] == 1 and $val['is_display'] == 1 and in_array($val['id'],$permissions)) {
+            if($val['type'] == 1 and $val['is_display'] == 1 and in_array($val['id'],$permissions) and \think\facade\App::instance()->http->getName() == $val['module']) {
                 if(empty($value['parameter'])) {
                     $url = (string)url('/'.$val['title']);
                 } else {

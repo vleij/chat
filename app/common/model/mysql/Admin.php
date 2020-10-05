@@ -8,8 +8,8 @@
 
 namespace app\common\model\mysql;
 
-use think\model\Pivot;
-class Admin extends Pivot
+use think\Model;
+class Admin extends Model
 {
 
     protected $name = 'admin';

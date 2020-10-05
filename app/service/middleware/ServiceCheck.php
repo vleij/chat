@@ -13,10 +13,11 @@ class ServiceCheck
 {
     public function handle($request, \Closure $next)
     {
-        if (!Session::has('service')) {
-            return redirect('http://www.chat.com/service.php/login/login');
+        //前置中间件
+        if (!Session::has(config('service.session_service')) && !preg_match('/login/',$request->pathinfo())) {
+            return redirect((string)url('/login/login'));
         }
-
         return $next($request);
+        // 后置中间件
     }
 }

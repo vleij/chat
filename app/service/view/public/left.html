@@ -1,0 +1,62 @@
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="nav-close"><i class="fa fa-times-circle"></i>
+    </div>
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                <div class="dropdown profile-element">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                                <span class="clear">
+                                    <span class="block m-t-xs" style="font-size:20px;">
+                                        <i class="fa fa-area-chart"></i>
+                                        <strong class="font-bold">ChatAdmin</strong>
+                                    </span>
+                                </span>
+                    </a>
+                </div>
+                <div class="logo-element">Chat
+                </div>
+            </li>
+            {volist name='menu' id='one'}
+            {eq name="one['pid']" value="0"}
+            <li class="line dk"></li>
+            <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
+                <span class="ng-scope">{$one['name']}</span>
+            </li>
+            {/eq}
+            <li>
+                {if ($one['pid'] == 0) && empty($one['child'])}
+                <a class="J_menuItem" href="{$one['url']}"><i class="fa fa-edit"></i> <span class="nav-label">{$one['name']}</span></a>
+                {else /}
+                <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">{$one['name']}</span><span class="fa arrow"></span></a>
+                {/if}
+                {notempty name="one['child']"}
+                {volist name="one['child']" id='two'}
+                <ul class="nav nav-second-level">
+                    {empty name="two['child']"}
+                    <li><a class="J_menuItem" href="{$two['url']}">{$two['name']}</a>
+                    </li>
+                    {/empty}
+                    {notempty name="two['child']"}
+                    <li>
+                        <a href="#">{$two['name']}<span class="fa arrow"></span></a>
+                        <ul class="nav nav-third-level">
+                            {volist name="two['child']" id='three'}
+                            <li><a class="J_menuItem" href="{$two['url']}">{$three['name']}</a>
+                            </li>
+                            {/volist}
+                        </ul>
+                    </li>
+
+                    {/notempty}
+
+                </ul>
+                {/volist}
+                {/notempty}
+
+            {/volist}
+
+
+        </ul>
+    </div>
+</nav>
