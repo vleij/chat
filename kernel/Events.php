@@ -128,7 +128,7 @@ class Events
                    $chat_message = [
                        'message_type' => 'chatMessage',
                        'data' => [
-                           'name' => $message['data']['mine']['username'],
+                           'username' => $message['data']['mine']['username'],
                            'avatar' => $message['data']['mine']['avatar'],
                            'id' => $message['data']['mine']['id'],
                            'time' => date('H:i'),
@@ -188,6 +188,7 @@ class Events
                        'name' => $user['name'],
                        'avatar' => $user['avatar'],
                        'ip' => $_SERVER['REMOTE_ADDR'],
+                       'time' => time(),
                    ]
                ]
            ];
