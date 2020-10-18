@@ -110,14 +110,23 @@ class Events
                        $NewUserList = $userList;
                        $NewUserList[$message['user_id']] = [
                            'user_id' => $message['user_id'],
-                           'name' => $message['name'],
-                           'avatar' => $message['avatar'],
+                           'user_name' => $message['name'],
+                           'user_avatar' => $message['avatar'],
                            'ip' => isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '',
                            'group' => $message['group'],
-                           'client_id' => $client_id
+                           'client_id' => $client_id,
+                           'addtime' => date('Y-m-d H:i:s'),
                        ];
 
                    }while(!self::$globalSc->cas('userList', $userList, $NewUserList));
+                   $visitor_id = $message["user_id"];
+                   $has = self::$db->select('id')->from('c_user')->where("user_id = '$visitor_id'")->row();
+                   var_dump($has);
+                   if(!empty($has)) {
+                       self::$db->update('c_user')->cols($NewUserList[$message['user_id']])->where("id=".$has['id'])->query();
+                   }else {
+                       self::$db->insert('c_user')->cols($NewUserList[$message['user_id']])->query();
+                   }
                    unset($NewUserList, $userList);
                }
                // 绑定 client_id 和 user_id（uid）
@@ -188,8 +197,8 @@ class Events
                'data' => [
                    'user_info' => [
                        'id' => $user['user_id'],
-                       'name' => $user['name'],
-                       'avatar' => $user['avatar'],
+                       'name' => $user['user_name'],
+                       'avatar' => $user['user_avatar'],
                        'ip' => $_SERVER['REMOTE_ADDR'],
                        'time' => time(),
                    ]
