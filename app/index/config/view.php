@@ -28,5 +28,6 @@ return [
         '__JS__'  => '/static/admin/js',
         '__IMG__' => '/static/admin/img',
         '__LAYUI__' => '/static/index/layui',
+        '__COMMONJS__'  => '/static/common/js',
     ],
 ];
