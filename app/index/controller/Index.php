@@ -8,10 +8,17 @@
 namespace app\index\controller;
 use think\facade\View;
 use think\facade\Db;
+use think\Facade\Cookie;
+use think\Facade\Session;
 class Index
 {
     public function index()
     {
+        if(!Cookie::has('PHPSESSID')){
+            Cookie('PHPSESSID',Session::getid(),86400*5);
+        }
+        $visiter = substr(Cookie::get('PHPSESSID'), 0,8);
+        VIew::assign('visiter',$visiter);
         return View::fetch();
     }
 

@@ -287,3 +287,17 @@ Stack trace:
 #10 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
 #11 {main}
 2020-09-18 18:20:30 pid:1 Worker process terminated
+2020-10-03 16:37:14 pid:1 Exception: 由于目标计算机积极拒绝，无法连接。
+ in D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php:69
+Stack trace:
+#0 D:\phpstudy_pro\WWW\chat\vendor\workerman\globaldata\src\Client.php(138): GlobalData\Client->getConnection('serviceList')
+#1 D:\phpstudy_pro\WWW\chat\kernel\Events.php(40): GlobalData\Client->__get('serviceList')
+#2 [internal function]: Events::onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#3 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(223): call_user_func('Events::onWorke...', Object(GatewayWorker\BusinessWorker))
+#4 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(2397): GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#5 D:\phpstudy_pro\WWW\chat\vendor\workerman\gateway-worker\src\BusinessWorker.php(197): Workerman\Worker->run()
+#6 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1400): GatewayWorker\BusinessWorker->run()
+#7 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(1343): Workerman\Worker::forkWorkersForWindows()
+#8 D:\phpstudy_pro\WWW\chat\vendor\workerman\workerman\Worker.php(542): Workerman\Worker::forkWorkers()
+#9 D:\phpstudy_pro\WWW\chat\kernel\start_businessworker.php(35): Workerman\Worker::runAll()
+#10 {main}

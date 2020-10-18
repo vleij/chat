@@ -20,7 +20,7 @@
 //declare(ticks=1);
 
 use \GatewayWorker\Lib\Gateway;
-
+use \Workerman\MySQL;
 /**
  * 主逻辑
  * 主要是处理 onConnect onMessage onClose 三个方法
@@ -30,10 +30,13 @@ class Events
 {
     //静态成员存储客服与客户列表
     public static $globalSc = null;
+    public static $db = null;
 
     public static function onWorkerStart($worker)
     {
-
+        if (empty(self::$db)) {
+            self::$db = new MySQL\Connection('127.0.0.1', '3306', 'root', 'root', 'chat');
+        }
         if (empty(self::$globalSc)) {
             self::$globalSc = new \GlobalData\Client('127.0.0.1:2207');
             // 客服列表

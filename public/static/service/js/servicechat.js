@@ -76,7 +76,7 @@ function sendMessage(sendMsg) {
     $("#chatMessage-"+uid).append(word);
     $(".msg-area").val('');
     // 滚动条自动定位到最底端
-    wordBottom();
+    scroll_bottom();
 }
 
 // 展示客户发送来的消息
@@ -111,7 +111,7 @@ function showUserMessage(uinfo, content) {
     setTimeout(function () {
         $("#chatMessage-" + uinfo.id).append(word);
         // 滚动条自动定位到最底端
-        wordBottom();
+        scroll_bottom();
 
     }, 200);
 }
@@ -229,7 +229,7 @@ function checkUser(one='') {
         // 设置当前会话的用户
         //$(".user_active").attr('data-id', uid).attr('data-name', name).attr('data-avatar', avatar);
         getChatLog(uid, avatar, name,temporary);
-        wordBottom();
+        scroll_bottom();
     });
     if(one == 1){
         var obj = $(".chat-user-list").find('li:eq(0)')
@@ -239,6 +239,12 @@ function checkUser(one='') {
         getChatLog(uid, avatar, name);
     }
     console.log(777)
+}
+function scroll_bottom(uid, delay) {
+    setTimeout(function () {
+        var div = document.getElementById("#chatMessage-"+uid);
+        div.scrollTop = div.scrollHeight;
+    }, delay || 300);
 }
 
 // 滚动条自动定位到最底端
@@ -349,7 +355,7 @@ function getChatLog(uid, avatar, name, temporary) {
 // 切换在线用户
 function changeUserTab(obj) {
     obj.addClass('active').siblings().removeClass('active');
-    wordBottom();
+    scroll_bottom();
 }
 function notifyMe(title, options, callback) {
     // 检查浏览器是否支持 Notification

@@ -1,0 +1,2 @@
+[2020-10-13T22:36:55+08:00][error] [0]Too few arguments to function Ramsey\Uuid\Uuid::uuid3(), 0 passed in D:\phpstudy_pro\WWW\chat\app\index\controller\Index.php on line 16 and exactly 2 expected[D:\phpstudy_pro\WWW\chat\vendor\ramsey\uuid\src\Uuid.php:579]
+[2020-10-13T22:37:47+08:00][error] [0]Too few arguments to function Ramsey\Uuid\Uuid::uuid3(), 0 passed in D:\phpstudy_pro\WWW\chat\app\index\controller\Index.php on line 16 and exactly 2 expected[D:\phpstudy_pro\WWW\chat\vendor\ramsey\uuid\src\Uuid.php:579]

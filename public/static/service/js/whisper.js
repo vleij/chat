@@ -570,7 +570,7 @@ function loginOut(){
     var closeNum = 0;
 
     if(len == closeNum){
-        window.location.href = '/service/login/loginOut';
+        window.location.href = '/service.php/LoginOut/loginOut';
     }
 
     $("#user_list li").each(function(){
