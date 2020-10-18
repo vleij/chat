@@ -493,7 +493,7 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
   //显示聊天面板
   var layimChat, layimMin, chatIndex, To = {}, popchat = function(data){
     data = data || {};
-
+    
     var chat = $('#layui-layim-chat'), render = {
       data: data
       ,base: cache.base
@@ -516,7 +516,7 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
       if(layimMin){
         layer.close(layimMin.attr('times'));
       }
-
+      
       //如果出现多个聊天面板
       if(list.find('li').length === 1 && !listThat[0]){
         layimChat.css('width', '800px');
@@ -617,7 +617,7 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
       ,shade: false
       ,closeBtn: false
       ,anim: thatChat.shift || 2
-      ,offset: 'r'
+      ,offset: 'b'
       ,move: '#layui-layim-min img'
       ,resize: false
       ,area: ['182px', '50px']
@@ -718,7 +718,7 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
     var local = layui.data('layim')[cache.mine.id] || {};
     var obj = {}, history = local.history || {};
     var is = history[data.type + data.id];
-
+    
     if(!layimMain) return;
     
     var historyElem = layimMain.find('.layim-list-history');
@@ -752,7 +752,6 @@ layui.define(['layer', 'laytpl', 'upload'], function(exports){
       ,id: cache.mine ? cache.mine.id : null
       ,mine: true
     };
-      console.log(data)
     var thatChat = thisChat(), ul = thatChat.elem.find('.layim-chat-main ul');
     var maxLength = cache.base.maxLength || 3000;
     data.content = thatChat.textarea.val();

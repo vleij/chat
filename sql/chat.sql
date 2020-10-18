@@ -2,21 +2,21 @@
 Navicat MySQL Data Transfer
 
 Source Server         : localhost
-Source Server Version : 50553
+Source Server Version : 50726
 Source Host           : localhost:3306
 Source Database       : chat
 
 Target Server Type    : MYSQL
-Target Server Version : 50553
+Target Server Version : 50726
 File Encoding         : 65001
 
-Date: 2020-10-06 21:15:30
+Date: 2020-10-18 16:48:25
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `c_admin`
+-- Table structure for c_admin
 -- ----------------------------
 DROP TABLE IF EXISTS `c_admin`;
 CREATE TABLE `c_admin` (
@@ -47,7 +47,7 @@ CREATE TABLE `c_admin` (
 INSERT INTO `c_admin` VALUES ('1', '0', 'admin', '', '15096141629', '', '', '', '', '0', '', '0', '', '0', '', '0', '0', '1');
 
 -- ----------------------------
--- Table structure for `c_admin_cate`
+-- Table structure for c_admin_cate
 -- ----------------------------
 DROP TABLE IF EXISTS `c_admin_cate`;
 CREATE TABLE `c_admin_cate` (
@@ -1164,7 +1164,7 @@ INSERT INTO `c_admin_cate` VALUES ('1123', '合作伙伴', '77,157', '1594604482
 INSERT INTO `c_admin_cate` VALUES ('1124', '合作测试', '77,60,157', '1594607691', '1594607694', '', '121', '0', '1');
 
 -- ----------------------------
--- Table structure for `c_admin_menu`
+-- Table structure for c_admin_menu
 -- ----------------------------
 DROP TABLE IF EXISTS `c_admin_menu`;
 CREATE TABLE `c_admin_menu` (
@@ -1199,7 +1199,7 @@ INSERT INTO `c_admin_menu` VALUES ('1', '系统管理', 'admin', 'home', '', nul
 INSERT INTO `c_admin_menu` VALUES ('2', '菜单管理', 'admin', 'menus', 'index', null, null, '1', '1', '1', '1', '1', null, '0', '0');
 
 -- ----------------------------
--- Table structure for `c_auth_group`
+-- Table structure for c_auth_group
 -- ----------------------------
 DROP TABLE IF EXISTS `c_auth_group`;
 CREATE TABLE `c_auth_group` (
@@ -1216,7 +1216,7 @@ CREATE TABLE `c_auth_group` (
 INSERT INTO `c_auth_group` VALUES ('1', '', '1', '1,2,4');
 
 -- ----------------------------
--- Table structure for `c_auth_group_access`
+-- Table structure for c_auth_group_access
 -- ----------------------------
 DROP TABLE IF EXISTS `c_auth_group_access`;
 CREATE TABLE `c_auth_group_access` (
@@ -1233,7 +1233,7 @@ CREATE TABLE `c_auth_group_access` (
 INSERT INTO `c_auth_group_access` VALUES ('1', '1');
 
 -- ----------------------------
--- Table structure for `c_auth_rule`
+-- Table structure for c_auth_rule
 -- ----------------------------
 DROP TABLE IF EXISTS `c_auth_rule`;
 CREATE TABLE `c_auth_rule` (
@@ -1259,7 +1259,65 @@ INSERT INTO `c_auth_rule` VALUES ('3', '修改菜单', 'menus/update', '1', '1',
 INSERT INTO `c_auth_rule` VALUES ('4', '对话平台', 'servicechat/index', '1', '1', '', '0', '1', 'service');
 
 -- ----------------------------
--- Table structure for `c_message`
+-- Table structure for c_chatgroup
+-- ----------------------------
+DROP TABLE IF EXISTS `c_chatgroup`;
+CREATE TABLE `c_chatgroup` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '群组id',
+  `groupname` varchar(155) NOT NULL COMMENT '群组名称',
+  `avatar` varchar(155) DEFAULT NULL COMMENT '群组头像',
+  `owner_name` varchar(155) DEFAULT NULL COMMENT '群主名称',
+  `owner_id` int(11) DEFAULT NULL COMMENT '群主id',
+  `owner_avatar` varchar(155) DEFAULT NULL COMMENT '群主头像',
+  `owner_sign` varchar(155) DEFAULT NULL COMMENT '群主签名',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of c_chatgroup
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for c_chatuser
+-- ----------------------------
+DROP TABLE IF EXISTS `c_chatuser`;
+CREATE TABLE `c_chatuser` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(155) DEFAULT NULL,
+  `pwd` varchar(155) DEFAULT NULL COMMENT '密码',
+  `groupid` int(5) DEFAULT NULL COMMENT '所属的分组id',
+  `status` varchar(55) DEFAULT NULL,
+  `sign` varchar(255) DEFAULT NULL,
+  `avatar` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of c_chatuser
+-- ----------------------------
+INSERT INTO `c_chatuser` VALUES ('1', '纸飞机', '21232f297a57a5a743894a0e4a801fc3', '2', 'outline', '在深邃的编码世界，做一枚轻盈的纸飞机', 'http://cdn.firstlinkapp.com/upload/2016_6/1465575923433_33812.jpg');
+INSERT INTO `c_chatuser` VALUES ('2', '马云', '21232f297a57a5a743894a0e4a801fc3', '2', 'online', '让天下没有难写的代码', 'http://tp4.sinaimg.cn/2145291155/180/5601307179/1');
+INSERT INTO `c_chatuser` VALUES ('3', '罗玉凤', '21232f297a57a5a743894a0e4a801fc3', '3', 'online', '在自己实力不济的时候，不要去相信什么媒体和记者。他们不是善良的人，有时候候他们的采访对当事人而言就是陷阱', 'http://tp1.sinaimg.cn/1241679004/180/5743814375/0');
+INSERT INTO `c_chatuser` VALUES ('13', '雷佳', '4297f44b13955235245b2497399d7a93', '1', 'online', '前端就是这么牛', 'http://tp1.sinaimg.cn/1241679004/180/5743814375/0');
+
+-- ----------------------------
+-- Table structure for c_groupdetail
+-- ----------------------------
+DROP TABLE IF EXISTS `c_groupdetail`;
+CREATE TABLE `c_groupdetail` (
+  `userid` int(11) NOT NULL,
+  `username` varchar(155) NOT NULL,
+  `useravatar` varchar(155) NOT NULL,
+  `usersign` varchar(155) NOT NULL,
+  `groupid` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of c_groupdetail
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for c_message
 -- ----------------------------
 DROP TABLE IF EXISTS `c_message`;
 CREATE TABLE `c_message` (
@@ -1288,7 +1346,7 @@ INSERT INTO `c_message` VALUES ('2', 'kf1', '1', '1', '我是客服', '160178954
 INSERT INTO `c_message` VALUES ('3', '1', 'kf1', '1', '我想咨询课程', '1601789543', '0', '0', '秀秀', '1', '1', '/static/index/images/1.jpg');
 
 -- ----------------------------
--- Table structure for `c_service`
+-- Table structure for c_service
 -- ----------------------------
 DROP TABLE IF EXISTS `c_service`;
 CREATE TABLE `c_service` (
@@ -1310,11 +1368,11 @@ CREATE TABLE `c_service` (
 -- ----------------------------
 -- Records of c_service
 -- ----------------------------
-INSERT INTO `c_service` VALUES ('1', '客服小白', '0083dyL4ABn5s', '/uploads/20171024/902b5294f41f6a7d1e1451c7c0969a21.jpg', '1', '2', '1', '1601906333', '::1', '1601906333', null, null);
+INSERT INTO `c_service` VALUES ('1', '客服小白', '0083dyL4ABn5s', '/uploads/20171024/902b5294f41f6a7d1e1451c7c0969a21.jpg', '1', '2', '1', '1603009447', '127.0.0.1', '1603009447', null, null);
 INSERT INTO `c_service` VALUES ('2', '客服小美', 'cb78913de44f5a36ab63e8ffacde44b0', '/uploads/20171024/43cb54a995b89d0926e1de31af0074fc.jpg', '1', '2', '1', '', '', null, null, null);
 
 -- ----------------------------
--- Table structure for `c_su_main`
+-- Table structure for c_su_main
 -- ----------------------------
 DROP TABLE IF EXISTS `c_su_main`;
 CREATE TABLE `c_su_main` (
@@ -1334,26 +1392,33 @@ INSERT INTO `c_su_main` VALUES ('1', '1', '1', null);
 INSERT INTO `c_su_main` VALUES ('2', '2', '1', null);
 
 -- ----------------------------
--- Table structure for `c_user`
+-- Table structure for c_user
 -- ----------------------------
 DROP TABLE IF EXISTS `c_user`;
 CREATE TABLE `c_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '客服id',
-  `user_name` varchar(255) NOT NULL COMMENT '用户名称',
-  `user_avatar` varchar(255) NOT NULL COMMENT '用户头像',
-  `status` tinyint(1) NOT NULL COMMENT '用户状态',
-  `online` tinyint(1) NOT NULL DEFAULT '2' COMMENT '是否在线',
+  `user_name` varchar(200) NOT NULL COMMENT '用户名称',
+  `user_avatar` varchar(200) NOT NULL COMMENT '用户头像',
+  `status` tinyint(1) DEFAULT NULL COMMENT '用户状态',
+  `online` tinyint(1) DEFAULT '2' COMMENT '是否在线',
+  `user_id` varchar(200) NOT NULL COMMENT '游客唯一id',
+  `addtime` varchar(100) DEFAULT NULL,
+  `update_time` varchar(100) DEFAULT NULL,
+  `ip` varchar(255) DEFAULT NULL,
+  `group` varchar(255) DEFAULT NULL,
+  `client_id` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COMMENT='用户表';
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 -- ----------------------------
 -- Records of c_user
 -- ----------------------------
-INSERT INTO `c_user` VALUES ('1', '秀秀', '/static/index/images/1.jpg', '1', '2');
-INSERT INTO `c_user` VALUES ('2', '刘默', '', '1', '2');
+INSERT INTO `c_user` VALUES ('1', '秀秀', '/static/index/images/1.jpg', '1', '2', '', null, null, null, null, null);
+INSERT INTO `c_user` VALUES ('2', '刘默', '', '1', '2', '', null, null, null, null, null);
+INSERT INTO `c_user` VALUES ('3', '游客8edab716', '/static/index/images/1.jpg', null, '2', '8edab716', '2020-10-18 16:41:17', null, '127.0.0.1', '1', '7f0000010b5400000002');
 
 -- ----------------------------
--- Table structure for `c_ws_groups`
+-- Table structure for c_ws_groups
 -- ----------------------------
 DROP TABLE IF EXISTS `c_ws_groups`;
 CREATE TABLE `c_ws_groups` (
