@@ -8,14 +8,13 @@ var uinfo = {
 var socket_server = '127.0.0.1:8282'
 
 
-// 创建一个Socket实例
 var socket = new WebSocket('ws://' + socket_server);
 
 // 打开Socket
 socket.onopen = function (res) {
     toastr.success('连接成功')
     // 登录
-    var login_data = '{"type":"init", "service_id":"' + uinfo.id + '", "name" : "' + uinfo.username + '", "avatar" : "'
+    var login_data = '{"message_type":"init", "service_id":"' + uinfo.id + '", "name" : "' + uinfo.username + '", "avatar" : "'
         + uinfo.avatar + '", "group": ' + uinfo.group + '}';
     socket.send(login_data);
 };
@@ -27,7 +26,7 @@ socket.onmessage = function (res) {
     switch (data['message_type']) {
         // 服务端ping客户端
         case 'ping':
-            socket.send('{"type":"ping"}');
+            socket.send('{"message_type":"ping"}');
             break;
         // 添加用户
         case 'connect':
@@ -68,7 +67,7 @@ function sendMessage(sendMsg) {
     var uname = $(".chat-user-list .active").data('name');
 
     socket.send(JSON.stringify({
-        type: 'chatMessage',
+        message_type: 'chatMessage',
         data: {'to':{id: uid, name: uname}, 'mine':{username: uinfo.username,
                 id: uinfo.id, avatar: uinfo.avatar, content: msg, 'type': 'service'}}
 

@@ -72,7 +72,7 @@ class Events
    public static function onMessage($client_id, $message)
    {
        $message = json_decode($message, true);
-       switch ($message['type']) {
+       switch ($message['message_type']) {
            //客服初始
            case 'init':
                $serviceList = self::$globalSc->serviceList;
@@ -121,7 +121,7 @@ class Events
                    }while(!self::$globalSc->cas('userList', $userList, $NewUserList));
                    $visitor_id = $message["user_id"];
                    $has = self::$db->select('id')->from('c_user')->where("user_id = '$visitor_id'")->row();
-                   var_dump($has);
+
                    if(!empty($has)) {
                        self::$db->update('c_user')->cols($NewUserList[$message['user_id']])->where("id=".$has['id'])->query();
                    }else {
@@ -144,7 +144,7 @@ class Events
                            'avatar' => $message['data']['mine']['avatar'],
                            'id' => $message['data']['mine']['id'],
                            'time' => date('H:i'),
-                           'type' => empty($message['data']['mine']['type'])?'':$message['data']['mine']['type'],
+                           'message_type' => empty($message['data']['mine']['type'])?'':$message['data']['mine']['type'],
                            'content' => htmlspecialchars($message['data']['mine']['content']),
                        ]
                    ];
@@ -181,26 +181,30 @@ class Events
 
    public static function informOnlineTask($client_id,$group)
    {
-       //客服列表
-       $serviceList = self::$globalSc->serviceList;
-       //用户列表
-       $userList = self::$globalSc->userList;
+       $res = self::AssigningJob(self::$globalSc->serviceList, self::$globalSc->userList, $group);
 
-       //将一个元素移出(数组开头)
-       $service = array_shift($serviceList[$group]);
+       if (1 == $res['code']) {
 
-       $user = array_shift($userList);
+           //客服列表
+           $serviceList = self::$globalSc->serviceList;
+           //用户列表
+           $userList = self::$globalSc->userList;
 
-       $noticeUser = [
-           'message_type' => 'connect',
-           'data' => [
-               'service_id' => $service['id'],
-               'service_name' => $service['name'],
-           ]
-       ];
-       // 通知会员发送信息绑定客服的id
-       Gateway::sendToClient($client_id, json_encode($noticeUser));
-       unset($noticeUser);
+           //将一个元素移出(数组开头)
+           $service = array_shift($serviceList[$group]);
+
+           $user = array_shift($userList);
+
+           $noticeUser = [
+               'message_type' => 'connect',
+               'data' => [
+                   'service_id' => $service['id'],
+                   'service_name' => $service['name'],
+               ]
+           ];
+           // 通知会员发送信息绑定客服的id
+           Gateway::sendToClient($client_id, json_encode($noticeUser));
+           unset($noticeUser);
 
            // 通知客服端绑定会员的信息
            $noticeKf = [
@@ -217,6 +221,91 @@ class Events
            ];
            Gateway::sendToClient($service['client_id'], json_encode($noticeKf));
            unset($noticeKf);
+       } else {
+           $Message = '';
+           switch ($res['code']) {
+
+               case -1:
+                   $Message = '暂时没有客服上班,请稍后再咨询。';
+                   break;
+               case -2:
+                   break;
+               case -3:
+                   break;
+               case -4:
+                   $number = count(self::$global->userList);
+                   $Message = '您前面还有 ' . $number . ' 位会员在等待。';
+                   break;
+           }
+           $waitMessage = [
+               'message_type' => 'wait',
+               'data' => [
+                   'content' => $Message,
+               ]
+           ];
+
+           Gateway::sendToClient($client_id, json_encode($waitMessage));
+           unset($waitMessage);
+       }
+   }
+
+   private static function AssigningJob($serviceList, $userList, $group, $total='5')
+   {
+
+       // 没有客服上线
+       if(empty($serviceList) || empty($serviceList[$group])){
+           return ['code' => -1];
+       }
+
+       // 没有待分配的会员
+       if(empty($userList)){
+           return ['code' => -2];
+       }
+
+       // 未设置每个客服可以服务多少人
+       if(0 == $total){
+           return ['code' => -3];
+       }
+
+       // 查看该组的客服是否在线
+       if(!isset($serviceList[$group])){
+           return ['code' => -1];
+       }
+
+       $kf = $serviceList[$group];
+       $user = array_shift($userList);
+
+       $kf = array_shift($kf);
+       $min = $kf['task'];
+       $flag = $kf['id'];
+
+       foreach($serviceList[$group] as $key=>$vo){
+           if($vo['task'] < $min){
+               $min = $vo['task'];
+               $flag = $key;
+           }
+       }
+       unset($kf);
+
+       // 需要排队了
+       if($serviceList[$group][$flag]['task'] == $total){
+           return ['code' => -4];
+       }
+
+       $serviceList[$group][$flag]['task'] += 1;
+       array_push($serviceList[$group][$flag]['user_info'], $user['client_id']); // 被分配的用户信息
+
+       return [
+           'code' => 1,
+           'data' => [
+               $serviceList[$group][$flag]['id'],
+               $serviceList[$group][$flag]['name'],
+               $serviceList[$group][$flag]['client_id'],
+               $user,
+               $serviceList,
+               $userList
+           ]
+       ];
 
    }
 }
