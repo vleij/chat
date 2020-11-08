@@ -14,6 +14,7 @@ use think\Model;
 class User extends Model
 {
     protected $name = 'user';
+    protected $pk = 'user_id';
     public function roles()
     {
         return $this->belongsToMany(Service::class, SuMain::class,'','user_id');

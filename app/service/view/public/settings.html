@@ -7,13 +7,13 @@
 
         <div class="text-center border-bottom p-4">
             <div class="mb-4 profile-user">
-                <img src="__ASSETSIMG__/users/avatar-1.jpg" class="rounded-circle avatar-lg img-thumbnail" alt="">
+                <img src="{$serviceUser['user_avatar']}" class="rounded-circle avatar-lg img-thumbnail" alt="">
                 <button type="button" class="btn bg-light avatar-xs p-0 rounded-circle profile-photo-edit">
                     <i class="ri-pencil-fill"></i>
                 </button>
             </div>
 
-            <h5 class="font-size-16 mb-1 text-truncate">Patricia Smith</h5>
+            <h5 class="font-size-16 mb-1 text-truncate">{$serviceUser['user_name']}</h5>
             <div class="dropdown d-inline-block mb-1">
                 <a class="text-muted dropdown-toggle pb-1 d-block" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Available <i class="mdi mdi-chevron-down"></i>

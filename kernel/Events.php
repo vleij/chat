@@ -148,8 +148,19 @@ class Events
                            'content' => htmlspecialchars($message['data']['mine']['content']),
                        ]
                    ];
-                   Gateway::sendToClient($client['0'], json_encode($chat_message));
+                   $data = [
+                       'send_id' => $message['data']['mine']['id'],
+                       'receive_id' => $message['data']['to']['id'],
+                       'content' => htmlspecialchars($message['data']['mine']['content']),
+                       'create_time' => time(),
+                       'send_name' => $message['data']['mine']['username'],
+                       's_id' => empty($message['data']['mine']['type'])?str_replace('KF','',$message['data']['to']['id']):str_replace('KF','',$message['data']['mine']['id']),
+                       'u_id' => empty($message['data']['mine']['type'])?$message['data']['mine']['id']:$message['data']['to']['id'],
+                       'avatar' => $message['data']['mine']['avatar']
+                   ];
 
+                   Gateway::sendToClient($client['0'], json_encode($chat_message));
+                   self::$db->insert('c_message')->cols($data)->query();
                    unset($chat_message);
                }
                break;

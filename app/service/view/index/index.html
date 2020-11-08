@@ -64,16 +64,16 @@
                         <i class="ri-message-3-line"></i>
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="Groups">
-                    <a class="nav-link" id="pills-groups-tab" data-toggle="pill" href="#pills-groups" role="tab">
-                        <i class="ri-group-line"></i>
-                    </a>
-                </li>
-                <li class="nav-item" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="Contacts">
-                    <a class="nav-link" id="pills-contacts-tab" data-toggle="pill" href="#pills-contacts" role="tab">
-                        <i class="ri-contacts-line"></i>
-                    </a>
-                </li>
+                <!--<li class="nav-item" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="Groups">-->
+                    <!--<a class="nav-link" id="pills-groups-tab" data-toggle="pill" href="#pills-groups" role="tab">-->
+                        <!--<i class="ri-group-line"></i>-->
+                    <!--</a>-->
+                <!--</li>-->
+                <!--<li class="nav-item" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="Contacts">-->
+                    <!--<a class="nav-link" id="pills-contacts-tab" data-toggle="pill" href="#pills-contacts" role="tab">-->
+                        <!--<i class="ri-contacts-line"></i>-->
+                    <!--</a>-->
+                <!--</li>-->
                 <li class="nav-item" data-toggle="tooltip" data-trigger="hover" data-placement="top" title="Settings">
                     <a class="nav-link" id="pills-setting-tab" data-toggle="pill" href="#pills-setting" role="tab">
                         <i class="ri-settings-2-line"></i>
@@ -84,10 +84,10 @@
                         <img src="__ASSETSIMG__/users/avatar-1.jpg" alt="" class="profile-user rounded-circle">
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Profile <i class="ri-profile-line float-right text-muted"></i></a>
-                        <a class="dropdown-item" href="#">Setting <i class="ri-settings-3-line float-right text-muted"></i></a>
+                        <a class="dropdown-item" href="#">配置 <i class="ri-profile-line float-right text-muted"></i></a>
+                        <a class="dropdown-item" href="#">设置 <i class="ri-settings-3-line float-right text-muted"></i></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Log out <i class="ri-logout-circle-r-line float-right text-muted"></i></a>
+                        <a class="dropdown-item" href="#">退出 <i class="ri-logout-circle-r-line float-right text-muted"></i></a>
                     </div>
                 </li>
             </ul>
@@ -104,13 +104,13 @@
 
                 <li class="nav-item btn-group dropup profile-user-dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="__ASSETSIMG__/users/avatar-1.jpg" alt="" class="profile-user rounded-circle">
+                        <img src="{$serviceUser['user_avatar']}" alt="" class="profile-user rounded-circle">
                     </a>
                     <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Profile <i class="ri-profile-line float-right text-muted"></i></a>
-                        <a class="dropdown-item" href="#">Setting <i class="ri-settings-3-line float-right text-muted"></i></a>
+                        <a class="dropdown-item" href="#">配置 <i class="ri-profile-line float-right text-muted"></i></a>
+                        <a class="dropdown-item" href="#">设置 <i class="ri-settings-3-line float-right text-muted"></i></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Log out <i class="ri-logout-circle-r-line float-right text-muted"></i></a>
+                        <a class="dropdown-item" id="log_out" href="/service.php/loginOut/loginOut">退出 <i class="ri-logout-circle-r-line float-right text-muted"></i></a>
                     </div>
                 </li>
             </ul>
@@ -222,7 +222,7 @@
 
                             <ul class="list-unstyled chat-list chat-user-list" role="tablist">
                                 {volist name="user_list" id='v' key="i"}
-                                <li class='user_active id="u-{$v['id']}" {eq name="i" value="1"} active {/eq}' data-id="{$v['id']}" data-avatar="{$v['user_avatar']}" data-name="{$v['user_name']}" role="presentation">
+                                <li class='user_active id="u-{$v['id']}" {eq name="i" value="1"} active {/eq}' data-id="{$v['user_id']}" data-avatar="{$v['user_avatar']}" data-name="{$v['user_name']}" role="presentation">
                                     <a href="#uchat-{$v['id']}" aria-controls="uchat-{$v['id']}" role="tab" data-toggle="tab" data-name="{$v['user_name']}" data-id="{$v['id']}">
                                         <div class="media">
                                             {if empty($v['user_avatar'])}
@@ -285,30 +285,19 @@
                     <div class="row align-items-center">
                         <div class="col-sm-4 col-8">
                             <div class="media align-items-center">
-                                {notempty name="user_list[0]"}
                                 <div class="d-block d-lg-none mr-2">
                                     <a href="javascript: void(0);" class="user-chat-remove text-muted font-size-16 p-2"><i class="ri-arrow-left-s-line"></i></a>
                                 </div>
-                                {if empty($user_list[0]['user_avatar'])}
-                                <div class="mr-3">
-                                    <div class="avatar-xs">
-                                        <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                                            {$user_list[0]['user_name']|substr=0,3}
-                                        </span>
-                                    </div>
-                                </div>
-                                {else /}
-                                <div class="mr-3">
-                                    <img src="{$user_list[0]['user_avatar']}" class="rounded-circle avatar-xs" alt="">
-                                    <span class="user-status"></span>
-                                </div>
-                                {/if}
+                                <!--用户姓名头像切换start-->
+                                <div class="mr-3 user_avatar" >
 
+                                </div>
+                                <!--用户姓名头像切换end-->
                                 <div class="media-body overflow-hidden">
                                     <h5 class="font-size-16 mb-0 text-truncate"><a href="#" class="text-reset user-profile-show" id="user_name">{$user_list[0]['user_name']}</a> <i class="ri-record-circle-fill font-size-10 text-success d-inline-block ml-1"></i></h5>
                                 </div>
                             </div>
-                            {/notempty}
+
                         </div>
                         <div class="col-sm-8 col-4">
                             <ul class="list-inline user-chat-nav text-right mb-0">
@@ -355,8 +344,8 @@
                 <!-- start chat conversation -->
             <div class="tab-content" id="chat-main">
                 {volist name="user_list" id='v' key="i"}
-                <div class='chat-conversation p-3 p-lg-4 tab-pane fade {eq name="i" value="1"}in active show{/eq} chat-box' data-simplebar="init" role="tabpanel"  id="uchat-{$v['id']}">
-                    <ul class="list-unstyled mb-0 " id="chatMessage-{$v['id']}">
+                <div class='chat-conversation p-3 p-lg-4 tab-pane fade {eq name="i" value="1"}in active show{/eq} chat-box' data-simplebar="init" role="tabpanel"  id="uchat-{$v['user_id']}">
+                    <ul class="list-unstyled mb-0 " id="chatMessage-{$v['user_id']}">
 
                     </ul>
                 </div>
@@ -690,6 +679,8 @@
     var avatar = "/static/service/images/tx.jpg";
     var group = "1";
     var socket_server = "127.0.0.1:8282";
+
+
 </script>
 <script src="__JS__/servicechat.js"></script>
 <script>

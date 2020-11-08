@@ -214,6 +214,7 @@ function checkUser(one='') {
         changeUserTab($(this));
         var uid = $(this).data('id');
         var avatar = $(this).data('avatar');
+
         var name = $(this).data('name');
         var temporary = $(this).data("temporary");
         $('#u-' + uid).find('#unread').text("");
@@ -238,13 +239,13 @@ function checkUser(one='') {
         var name = obj.data('name');
         getChatLog(uid, avatar, name);
     }
-    console.log(777)
+
 }
 function scroll_bottom(uid, delay) {
-    setTimeout(function () {
-        var div = document.getElementById("#chatMessage-"+uid);
-        div.scrollTop = div.scrollHeight;
-    }, delay || 300);
+    // setTimeout(function () {
+    //     var div = document.getElementById("#chatMessage-"+uid);
+    //     div.scrollTop = div.scrollHeight;
+    // }, delay || 300);
 }
 
 // 滚动条自动定位到最底端
@@ -293,21 +294,21 @@ function getChatLog(uid, avatar, name, temporary) {
     var avatar = avatar;
     var name = name;
     var sid = service_id;
-    $("#user_avatar").empty()
+
+    $(".user_avatar").empty()
     if(typeof avatar == "undefined" || avatar == null || avatar == ""){
-        var avatar_html = `<div class="avatar-xs">
-                              <span class="avatar-title rounded-circle bg-soft-primary text-primary">
-                               刘
-                                 </span>`
-        $("#user_avatar").append(avatar_html);
+        avatar = name.substring(0,1)
+        var avatar_html = `<div class="avatar-xs"><span class="avatar-title rounded-circle bg-soft-primary text-primary">${avatar}</span></div>`
+        $(".user_avatar").append(avatar_html);
     }else{
-        $("#user_avatar").append('<img src="'+avatar+'" class="rounded-circle avatar-xs" alt="">');
+        $(".user_avatar").append('<img src="'+avatar+'" class="rounded-circle avatar-xs" alt=""><span class="user-status"></span>');
     }
     $("#user_name").text(name);
     if(temporary == '1'){
         return
     }
     $("#chatMessage-"+uid+" li").remove();
+    console.log(uid)
     $.ajax({
         url: './getUserData',
         type:'GET',
@@ -318,7 +319,7 @@ function getChatLog(uid, avatar, name, temporary) {
                 var message = data.result
                 var _html = ''
                 $.each(message, function (index, value) {
-                    if (value.send_id == 'kf'+value.s_id) {
+                    if (value.send_id == 'KF'+value.s_id) {
                         _html += '<li class="right">';
                     } else {
                         _html += '<li>';

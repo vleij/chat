@@ -19,6 +19,7 @@ class Index extends Base
         $id = session(config('service.session_service_id'));
         $serviceUser = $serviceObj->getServiceId($id);
         $user_list = $serviceObj->rolesUserMessage($id);
+
         $menu_list = $menu->getAllMenusData();
         $messageObj = new MessageModel();
         $message = [];
@@ -42,5 +43,6 @@ class Index extends Base
         $data = $messageObj->getUserSMessage($uid, $sid);
         return replace(config('status.succeed'),'ok',$data,200);
     }
+
 
 }
