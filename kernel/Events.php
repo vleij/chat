@@ -105,6 +105,7 @@ class Events
            case 'user_init';
                $userList = self::$globalSc->userList;
                // 如果该顾客未在内存中记录则记录
+
                if(!array_key_exists($message['user_id'], $userList)){
                    do{
                        $NewUserList = $userList;
@@ -132,7 +133,7 @@ class Events
                // 绑定 client_id 和 user_id（uid）
                Gateway::bindUid($client_id,$message['user_id']);
                 // 尝试分配新客户进入服务
-               self::informOnlineTask($client_id,$message['group']);
+               self::informOnlineTask($client_id,$message['group'], $message['service_id']);
                break;
            case 'chatMessage':
                $client = Gateway::getClientIdByUid($message['data']['to']['id']);
@@ -159,8 +160,18 @@ class Events
                        'avatar' => $message['data']['mine']['avatar']
                    ];
 
-                   Gateway::sendToClient($client['0'], json_encode($chat_message));
-                   self::$db->insert('c_message')->cols($data)->query();
+                    // 如果不在线就先存起来
+                    if(!Gateway::isUidOnline($data['s_id']))
+                    {
+                        // 假设有个your_store_fun函数用来保存未读消息(这个函数要自己实现)
+                        print('不在线');
+                        self::$db->insert('c_message')->cols($data)->query();
+                    }
+                    else
+                    {
+                        // 在线就转发消息给对应的uid
+                        Gateway::sendToClient($client['0'], json_encode($chat_message));
+                    }
                    unset($chat_message);
                }
                break;
@@ -179,9 +190,9 @@ class Events
        /*GateWay::sendToAll("$client_id logout\r\n");*/
    }
 
-   public static function informOnlineTask($client_id,$group)
+   public static function informOnlineTask($client_id,$group, $service_id)
    {
-       $res = self::AssigningJob(self::$globalSc->serviceList, self::$globalSc->userList, $group);
+       $res = self::AssigningJob(self::$globalSc->serviceList, self::$globalSc->userList, $group, $service_id);
 
        if (1 == $res['code']) {
 
@@ -205,21 +216,22 @@ class Events
            // 通知会员发送信息绑定客服的id
            Gateway::sendToClient($client_id, json_encode($noticeUser));
            unset($noticeUser);
-
-           // 通知客服端绑定会员的信息
-           $noticeKf = [
-               'message_type' => 'connect',
-               'data' => [
-                   'user_info' => [
-                       'id' => $user['user_id'],
-                       'name' => $user['user_name'],
-                       'avatar' => $user['user_avatar'],
-                       'ip' => $_SERVER['REMOTE_ADDR'],
-                       'time' => time(),
+           if(Gateway::isUidOnline($service_id)){
+               // 通知客服端绑定会员的信息
+               $noticeKf = [
+                   'message_type' => 'connect',
+                   'data' => [
+                       'user_info' => [
+                           'id' => $user['user_id'],
+                           'name' => $user['user_name'],
+                           'avatar' => $user['user_avatar'],
+                           'ip' => $_SERVER['REMOTE_ADDR'],
+                           'time' => time(),
+                       ]
                    ]
-               ]
-           ];
-           Gateway::sendToClient($service['client_id'], json_encode($noticeKf));
+               ];
+               Gateway::sendToClient($service['client_id'], json_encode($noticeKf));
+           }
            unset($noticeKf);
        } else {
            $Message = '';
@@ -249,9 +261,12 @@ class Events
        }
    }
 
-   private static function AssigningJob($serviceList, $userList, $group, $total='5')
+   private static function AssigningJob($serviceList, $userList, $group, $service_id)
    {
-
+       $total='5';
+        if(!empty($service_id)){
+            return ['code' => 1];
+        }
        // 没有客服上线
        if(empty($serviceList) || empty($serviceList[$group])){
            return ['code' => -1];

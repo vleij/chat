@@ -277,6 +277,9 @@
     <!-- end chat-leftsidebar -->
 
     <!-- Start User chat -->
+    {if empty($user_list[0]['user_name'])}
+    <div class="user-chat w-100"></div>
+    {else /}
     <div class="user-chat w-100">
         <div class="d-lg-flex">
             <!-- start chat conversation section -->
@@ -342,15 +345,15 @@
                 <!-- end chat user head -->
 
                 <!-- start chat conversation -->
-            <div class="tab-content" id="chat-main">
-                {volist name="user_list" id='v' key="i"}
-                <div class='chat-conversation p-3 p-lg-4 tab-pane fade {eq name="i" value="1"}in active show{/eq} chat-box' data-simplebar="init" role="tabpanel"  id="uchat-{$v['user_id']}">
-                    <ul class="list-unstyled mb-0 " id="chatMessage-{$v['user_id']}">
+                <div class="tab-content" id="chat-main">
+                    {volist name="user_list" id='v' key="i"}
+                    <div class='chat-conversation p-3 p-lg-4 tab-pane fade {eq name="i" value="1"}in active show{/eq} chat-box' data-simplebar="init" role="tabpanel"  id="uchat-{$v['user_id']}">
+                        <ul class="list-unstyled mb-0 " id="chatMessage-{$v['user_id']}">
 
-                    </ul>
+                        </ul>
+                    </div>
+                    {/volist}
                 </div>
-                {/volist}
-            </div>
                 <!-- end chat conversation end -->
 
                 <!-- start chat input section -->
@@ -635,6 +638,7 @@
             <!-- end User profile detail sidebar -->
         </div>
     </div>
+    {/if}
     <!-- End User chat -->
 </div>
 <!-- end  layout wrapper -->
@@ -674,7 +678,7 @@
             hideMethod: "fadeOut"
         };
     });
-    var service_id = "{$serviceUser['id']}";
+    var service_id = "{$serviceUser['serial_number']}";
     var uname = "{$serviceUser['user_name']}";
     var avatar = "/static/service/images/tx.jpg";
     var group = "1";

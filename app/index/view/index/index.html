@@ -24,7 +24,8 @@
         id:  "{$visiter}",
         username: '游客' + "{$visiter}",
         avatar: "/static/index/images/1.jpg",
-        group: 1
+        group: 1,
+        service:'KF10068'
     };
     // 连接服务器
     if(uinfo != undefined && config.socket != undefined){
@@ -61,7 +62,7 @@
                 console.log('握手成功');
             }
             // 登录
-            var login_data = '{"message_type":"user_init", "user_id":"' + uinfo.id + '", "name" : "' + uinfo.username + '", "avatar" : "' + uinfo.avatar + '", "group": ' + uinfo.group + '}';
+            var login_data = '{"message_type":"user_init", "user_id":"' + uinfo.id + '", "name" : "' + uinfo.username + '", "avatar" : "' + uinfo.avatar + '", "group": ' + uinfo.group + ', "service_id": "' + uinfo.service + '"}';
             socket.send(login_data);
         };
 
@@ -130,13 +131,12 @@
                     // 用户退出 更新用户列表
                     case 'logout':
                         break;
-                    //聊天还有不在线
+                    //聊天不在线
                     case 'wait':
                         layui.use('layim', function(layim) {
                             layer.msg(data.data.content, {'time': 2000});
                         })
                         break;
-
                 }
             };
 

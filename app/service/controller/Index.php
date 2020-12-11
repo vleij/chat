@@ -23,9 +23,11 @@ class Index extends Base
         $menu_list = $menu->getAllMenusData();
         $messageObj = new MessageModel();
         $message = [];
+
         if(!empty($user_list[0])){
             $message = $messageObj->getUserSMessage($user_list[0]['id'], $id);
         }
+
         View::assign([
             'menu'  => $menu_list,
             'serviceUser' => $serviceUser,
