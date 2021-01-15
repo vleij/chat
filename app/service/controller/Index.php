@@ -17,6 +17,7 @@ class Index extends Base
         $menu = new HomeBusiness();
         $serviceObj = new ServiceModel();
         $id = session(config('service.session_service_id'));
+
         $serviceUser = $serviceObj->getServiceId($id);
         $user_list = $serviceObj->rolesUserMessage($id);
 

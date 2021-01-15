@@ -1,5 +1,5 @@
 var uinfo = {
-    id:  'KF' + service_id,
+    id:  service_id,
     username: uname,
     avatar: avatar,
     group: group
@@ -22,7 +22,7 @@ socket.onopen = function (res) {
 // 监听消息
 socket.onmessage = function (res) {
     var data = eval("(" + res.data + ")");
-    console.log(data)
+
     switch (data['message_type']) {
         // 服务端ping客户端
         case 'ping':
@@ -72,6 +72,8 @@ function sendMessage(sendMsg) {
                 id: uinfo.id, avatar: uinfo.avatar, content: msg, 'type': 'service'}}
 
     }));
+    console.log(word)
+    console.log(uid)
     $("#chatMessage-"+uid).append(word);
     $(".msg-area").val('');
     // 滚动条自动定位到最底端
@@ -307,7 +309,6 @@ function getChatLog(uid, avatar, name, temporary) {
         return
     }
     $("#chatMessage-"+uid+" li").remove();
-    console.log(uid)
     $.ajax({
         url: './getUserData',
         type:'GET',
@@ -354,7 +355,7 @@ function getChatLog(uid, avatar, name, temporary) {
 
 // 切换在线用户
 function changeUserTab(obj) {
-    obj.addClass('active').siblings().removeClass('active');
+    obj.addClass('active').siblings().removeClass('active').children().removeClass('active');
     scroll_bottom();
 }
 function notifyMe(title, options, callback) {

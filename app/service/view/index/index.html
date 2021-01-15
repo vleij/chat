@@ -222,7 +222,7 @@
 
                             <ul class="list-unstyled chat-list chat-user-list" role="tablist">
                                 {volist name="user_list" id='v' key="i"}
-                                <li class='user_active' id="u-{$v['id']}" {eq name="i" value="1"} active {/eq}' data-id="{$v['user_id']}" data-avatar="{$v['user_avatar']}" data-name="{$v['user_name']}" role="presentation">
+                                <li class='user_active {eq name="i" value="1"} active {/eq}' id="u-{$v['id']}"  data-id="{$v['user_id']}" data-avatar="{$v['user_avatar']}" data-name="{$v['user_name']}" role="presentation">
                                     <a href="#uchat-{$v['id']}" aria-controls="uchat-{$v['id']}" role="tab" data-toggle="tab" data-name="{$v['user_name']}" data-id="{$v['id']}">
                                         <div class="media">
                                             {if empty($v['user_avatar'])}

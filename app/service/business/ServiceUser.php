@@ -36,7 +36,7 @@ class ServiceUser
         }
         //记录session
         session(config('service.session_service'), $serviceUser);
-        session(config('service.session_service_id'), $serviceUser['id']);
+        session(config('service.session_service_id'), $serviceUser['serial_number']);
         return true;
     }
 

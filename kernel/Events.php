@@ -105,7 +105,7 @@ class Events
            case 'user_init';
                $userList = self::$globalSc->userList;
                // 如果该顾客未在内存中记录则记录
-
+               $service_id = empty($message['service_id'])?'0':$message['service_id'];
                if(!array_key_exists($message['user_id'], $userList)){
                    do{
                        $NewUserList = $userList;
@@ -117,6 +117,7 @@ class Events
                            'group' => $message['group'],
                            'client_id' => $client_id,
                            'addtime' => date('Y-m-d H:i:s'),
+                           'service_id' => $service_id,
                        ];
 
                    }while(!self::$globalSc->cas('userList', $userList, $NewUserList));
@@ -126,14 +127,17 @@ class Events
                    if(!empty($has)) {
                        self::$db->update('c_user')->cols($NewUserList[$message['user_id']])->where("id=".$has['id'])->query();
                    }else {
+                       self::$db->insert('c_su_main')->cols(['user_id' => $message['user_id'],'service_id' => $service_id])->query();
                        self::$db->insert('c_user')->cols($NewUserList[$message['user_id']])->query();
                    }
                    unset($NewUserList, $userList);
                }
+
                // 绑定 client_id 和 user_id（uid）
                Gateway::bindUid($client_id,$message['user_id']);
+               var_dump(self::$globalSc->userList);
                 // 尝试分配新客户进入服务
-               self::informOnlineTask($client_id,$message['group'], $message['service_id']);
+               self::informOnlineTask(self::$globalSc->userList[$message['user_id']]);
                break;
            case 'chatMessage':
                $client = Gateway::getClientIdByUid($message['data']['to']['id']);
@@ -155,7 +159,7 @@ class Events
                        'content' => htmlspecialchars($message['data']['mine']['content']),
                        'create_time' => time(),
                        'send_name' => $message['data']['mine']['username'],
-                       's_id' => empty($message['data']['mine']['type'])?str_replace('KF','',$message['data']['to']['id']):str_replace('KF','',$message['data']['mine']['id']),
+                       's_id' => empty($message['data']['mine']['type'])?$message['data']['to']['id']:$message['data']['mine']['id'],
                        'u_id' => empty($message['data']['mine']['type'])?$message['data']['mine']['id']:$message['data']['to']['id'],
                        'avatar' => $message['data']['mine']['avatar']
                    ];
@@ -190,31 +194,52 @@ class Events
        /*GateWay::sendToAll("$client_id logout\r\n");*/
    }
 
-   public static function informOnlineTask($client_id,$group, $service_id)
+   public static function informOnlineTask($user)
    {
-       $res = self::AssigningJob(self::$globalSc->serviceList, self::$globalSc->userList, $group, $service_id);
-
+       $res = self::AssigningJob(self::$globalSc->serviceList, self::$globalSc->userList, $user['group'], $user['service_id']);
        if (1 == $res['code']) {
+           while(!self::$globalSc->cas('serviceList', self::$globalSc->kfList, $res['data']['4'])){}; // 更新客服数据
+           while(!self::$globalSc->cas('userList', self::$globalSc->userList, $res['data']['5'])){}; // 更新会员数据
+           $noticeUser = [
+               'message_type' => 'connect',
+               'data' => [
+                   'service_id' => $res['data'][0],
+                   'service_name' => $res['data'][1],
+               ]
+           ];
+           // 通知会员发送信息绑定客服的id
+           Gateway::sendToClient($user['client_id'], json_encode($noticeUser));
+           unset($noticeUser);
+           // 通知客服端绑定会员的信息
+           $noticeKf = [
+               'message_type' => 'connect',
+               'data' => [
+                   'user_info' => [
+                       'id' => $user['user_id'],
+                       'name' => $user['user_name'],
+                       'avatar' => $user['user_avatar'],
+                       'ip' => $_SERVER['REMOTE_ADDR'],
+                       'time' => time(),
+                   ]
+               ]
+           ];
+           Gateway::sendToClient($res['data'][2], json_encode($noticeKf));
 
-           //客服列表
-           $serviceList = self::$globalSc->serviceList;
-           //用户列表
-           $userList = self::$globalSc->userList;
+           unset($noticeKf);
+       } else if(2 == $res['code']){
 
-           //将一个元素移出(数组开头)
-           $service = array_shift($serviceList[$group]);
-
-           $user = array_shift($userList);
+           $service_id = $user['service_id'];
+           $service = self::$db->select('id, user_name')->from('c_service')->where("serial_number= '$service_id' ")->row();
 
            $noticeUser = [
                'message_type' => 'connect',
                'data' => [
                    'service_id' => $service['id'],
-                   'service_name' => $service['name'],
+                   'service_name' => $service['user_name'],
                ]
            ];
            // 通知会员发送信息绑定客服的id
-           Gateway::sendToClient($client_id, json_encode($noticeUser));
+           Gateway::sendToClient($user['client_id'], json_encode($noticeUser));
            unset($noticeUser);
            if(Gateway::isUidOnline($service_id)){
                // 通知客服端绑定会员的信息
@@ -230,10 +255,10 @@ class Events
                        ]
                    ]
                ];
-               Gateway::sendToClient($service['client_id'], json_encode($noticeKf));
+               Gateway::sendToUid($service_id, json_encode($noticeKf));
            }
            unset($noticeKf);
-       } else {
+       }else {
            $Message = '';
            switch ($res['code']) {
 
@@ -256,7 +281,7 @@ class Events
                ]
            ];
 
-           Gateway::sendToClient($client_id, json_encode($waitMessage));
+           Gateway::sendToUid($user['user_id'], json_encode($waitMessage));
            unset($waitMessage);
        }
    }
@@ -265,7 +290,7 @@ class Events
    {
        $total='5';
         if(!empty($service_id)){
-            return ['code' => 1];
+            return ['code' => 2];
         }
        // 没有客服上线
        if(empty($serviceList) || empty($serviceList[$group])){
@@ -288,8 +313,9 @@ class Events
        }
 
        $kf = $serviceList[$group];
+       var_dump($userList);
        $user = array_shift($userList);
-
+       var_dump($userList);
        $kf = array_shift($kf);
        $min = $kf['task'];
        $flag = $kf['id'];

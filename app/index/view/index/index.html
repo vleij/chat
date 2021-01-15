@@ -25,7 +25,7 @@
         username: '游客' + "{$visiter}",
         avatar: "/static/index/images/1.jpg",
         group: 1,
-        service:'KF10068'
+        service:''
     };
     // 连接服务器
     if(uinfo != undefined && config.socket != undefined){
@@ -103,7 +103,7 @@
             //监听收到的消息
             socket.onmessage = function(res){
                 var data = eval("("+res.data+")");
-                console.log(data.data);
+                console.log(data);
                 switch(data['message_type']){
                     // 服务端ping客户端
                     case 'ping':
@@ -143,6 +143,7 @@
     }
     function connect(socket)
     {
+        console.log(uinfo)
     layui.use('layim', function(layim) {
         //自定义客服窗口
         layim.config({

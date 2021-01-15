@@ -21,8 +21,8 @@ class Service extends Model
 
     public function rolesUserMessage($id)
     {
-        $res = $this::find($id);
-        return $res->roles()->join('(select content,create_time,u_id,s_id from c_message where s_id = '.$id.' order by create_time desc, id desc) m','pivot.id = m.u_id','left')->group('c_user.id')->field('user_name,c_user.id,online,user_avatar,m.content,m.create_time as last_msg_time')->select();
+        $res = $this::where('serial_number', $id)->field('serial_number as id')->find();
+        return $res->roles()->join('(select content,create_time,u_id,s_id from c_message where s_id = '.$id.' order by create_time desc, id desc) m','pivot.id = m.u_id','left')->where('c_user.service_id', $id)->group('c_user.id')->field('user_name,c_user.id,online,user_avatar,m.content,m.create_time as last_msg_time')->select();
     }
 
     /**
@@ -58,7 +58,7 @@ class Service extends Model
         if(empty($uid)){
             return false;
         }
-        $where = ['id'=> trim($uid)];
+        $where = ['serial_number'=> trim($uid)];
         $result = $this->where($where)->find();
         return $result;
     }
