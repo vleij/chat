@@ -135,7 +135,7 @@ class Events
 
                // 绑定 client_id 和 user_id（uid）
                Gateway::bindUid($client_id,$message['user_id']);
-               var_dump(self::$globalSc->userList);
+
                 // 尝试分配新客户进入服务
                self::informOnlineTask(self::$globalSc->userList[$message['user_id']]);
                break;
@@ -167,16 +167,16 @@ class Events
                     // 如果不在线就先存起来
                     if(!Gateway::isUidOnline($data['s_id']))
                     {
-                        // 假设有个your_store_fun函数用来保存未读消息(这个函数要自己实现)
-                        print('不在线');
-                        self::$db->insert('c_message')->cols($data)->query();
+                        $data['look'] = 0;
                     }
                     else
                     {
+                        $data['look'] = 1;
                         // 在线就转发消息给对应的uid
                         Gateway::sendToClient($client['0'], json_encode($chat_message));
                     }
-                   unset($chat_message);
+                   self::$db->insert('c_message')->cols($data)->query();
+                   unset($chat_message, $data);
                }
                break;
        }
@@ -198,7 +198,7 @@ class Events
    {
        $res = self::AssigningJob(self::$globalSc->serviceList, self::$globalSc->userList, $user['group'], $user['service_id']);
        if (1 == $res['code']) {
-           while(!self::$globalSc->cas('serviceList', self::$globalSc->kfList, $res['data']['4'])){}; // 更新客服数据
+           while(!self::$globalSc->cas('serviceList', self::$globalSc->serviceList, $res['data']['4'])){}; // 更新客服数据
            while(!self::$globalSc->cas('userList', self::$globalSc->userList, $res['data']['5'])){}; // 更新会员数据
            $noticeUser = [
                'message_type' => 'connect',
@@ -313,9 +313,7 @@ class Events
        }
 
        $kf = $serviceList[$group];
-       var_dump($userList);
        $user = array_shift($userList);
-       var_dump($userList);
        $kf = array_shift($kf);
        $min = $kf['task'];
        $flag = $kf['id'];
