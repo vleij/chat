@@ -61,11 +61,10 @@ function sendMessage(sendMsg) {
         toastr.warning('请输入回复内容!', 'Warning');
         return false;
     }
-
-    var word = msgFactory(msg, 'mine', uinfo);
     var uid = $(".chat-user-list .active").data('id');
+    var word = msgFactory(msg, 'mine', uinfo, uid);
     var uname = $(".chat-user-list .active").data('name');
-
+    set_Storage(uid, (new Date()).valueOf())
     socket.send(JSON.stringify({
         message_type: 'chatMessage',
         data: {'to':{id: uid, name: uname}, 'mine':{username: uinfo.username,
@@ -118,7 +117,7 @@ function showUserMessage(uinfo, content) {
 }
 
 // 消息发送工厂
-function msgFactory(content, type, uinfo) {
+function msgFactory(content, type, uinfo, uid='') {
     var _html = '';
     if ('mine' == type) {
         _html += '<li class="right">';
@@ -129,7 +128,7 @@ function msgFactory(content, type, uinfo) {
     _html += '<div class="chat-avatar"><img src="' + uinfo.avatar + '" alt=""></div>';
     _html += '<div class="user-chat-content"> <div class="ctext-wrap"> <div class="ctext-wrap-content">';
     _html += '<p class="mb-0">' + replaceContent(content) + '</p>';
-    _html += '<p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">10:02</span></p>';
+    _html += _getTimeStringAutoShort2((new Date()).valueOf()) =='' ? "" : '<p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">'+_getTimeStringAutoShort2((new Date()).valueOf(), true, uid)+'</span></p>';
     _html += '</div>'
     _html += `<div class="dropdown align-self-start">
             <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -319,7 +318,7 @@ function getChatLog(uid, avatar, name, temporary) {
                 var message = data.result
                 var _html = ''
                 $.each(message, function (index, value) {
-                    if (value.send_id == 'KF'+value.s_id) {
+                    if (value.send_id == value.s_id) {
                         _html += '<li class="right">';
                     } else {
                         _html += '<li>';
@@ -328,7 +327,7 @@ function getChatLog(uid, avatar, name, temporary) {
                     _html += '<div class="chat-avatar"><img src="' + value.avatar + '" alt=""></div>';
                     _html += '<div class="user-chat-content"> <div class="ctext-wrap"> <div class="ctext-wrap-content">';
                     _html += '<p class="mb-0">' + value.content+ '</p>';
-                    _html += '<p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">'+value.create_time+'</span></p>';
+                    _html += _getTimeStringAutoShort2(value.create_time+'000', true)=='' ? "" : '<p class="chat-time mb-0"><i class="ri-time-line align-middle"></i> <span class="align-middle">'+_getTimeStringAutoShort2(value.create_time+'000', true)+'</span></p>';
                     _html += '</div>'
                     _html += `<div class="dropdown align-self-start">
             <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -409,4 +408,3 @@ function autoClose(notification) {
         notification.close();
     }, false)
 }
-

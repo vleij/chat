@@ -19,10 +19,10 @@ class Service extends Model
         return $this->belongsToMany(User::class, SuMain::class,'','service_id');
     }
 
-    public function rolesUserMessage($id)
+    public function rolesUserMessage(int $id)
     {
         $res = $this::where('serial_number', $id)->field('serial_number as id')->find();
-        return $res->roles()->join('(select content,create_time,u_id,s_id from c_message where s_id = '.$id.' order by create_time desc, id desc) m','pivot.id = m.u_id','left')->where('c_user.service_id', $id)->group('c_user.id')->field('user_name,c_user.id,online,user_avatar,m.content,m.create_time as last_msg_time')->select();
+        return $res->roles()->join('(select * from c_message where id in (SELECT SUBSTRING_INDEX(GROUP_CONCAT(id order by create_time desc),",",1) as max_id FROM c_message where s_id = '.$id.' GROUP BY u_id)) m','pivot.user_id = m.u_id','left')->where('c_user.service_id', $id)->field('user_name,c_user.id,online,user_avatar,m.content,m.create_time as last_msg_time')->select();
     }
 
     /**

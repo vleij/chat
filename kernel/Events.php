@@ -239,7 +239,7 @@ class Events
                ]
            ];
            // 通知会员发送信息绑定客服的id
-           Gateway::sendToClient($user['client_id'], json_encode($noticeUser));
+           Gateway::sendToUid($user['user_id'], json_encode($noticeUser));
            unset($noticeUser);
            if(Gateway::isUidOnline($service_id)){
                // 通知客服端绑定会员的信息
