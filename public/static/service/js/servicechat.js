@@ -7,7 +7,6 @@ var uinfo = {
 
 var socket_server = '127.0.0.1:8282'
 
-
 var socket = new WebSocket('ws://' + socket_server);
 
 // 打开Socket
@@ -135,7 +134,7 @@ function msgFactory(content, type, uinfo, uid='') {
             <i class="ri-more-2-fill"></i>
             </a>
             <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Copy <i class="ri-file-copy-line float-right text-muted"></i></a>
+            <a class="dropdown-item" onclick="copy(this)">Copy <i class="ri-file-copy-line float-right text-muted"></i></a>
         <a class="dropdown-item" href="#">Save <i class="ri-save-line float-right text-muted"></i></a>
         <a class="dropdown-item" href="#">Forward <i class="ri-chat-forward-line float-right text-muted"></i></a>
         <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-right text-muted"></i></a>
@@ -314,6 +313,7 @@ function getChatLog(uid, avatar, name, temporary) {
         data: {uid:uid,sid:sid},
         dataType: 'JSON',
         success: function (data) {
+
             if(data.status == '1'){
                 var message = data.result
                 var _html = ''
@@ -334,10 +334,14 @@ function getChatLog(uid, avatar, name, temporary) {
             <i class="ri-more-2-fill"></i>
             </a>
             <div class="dropdown-menu">
-            <a class="dropdown-item" href="#">Copy <i class="ri-file-copy-line float-right text-muted"></i></a>
+            <a class="dropdown-item" `;
+            _html += 'onclick=copy('+value.content+')';
+            _html +=`>Copy <i class="ri-file-copy-line float-right text-muted"></i></a>
         <a class="dropdown-item" href="#">Save <i class="ri-save-line float-right text-muted"></i></a>
         <a class="dropdown-item" href="#">Forward <i class="ri-chat-forward-line float-right text-muted"></i></a>
-        <a class="dropdown-item" href="#">Delete <i class="ri-delete-bin-line float-right text-muted"></i></a>
+        <a class="dropdown-item" `;
+         _html += 'onclick=deletes('+value.id+')';
+         _html +=`>Delete <i class="ri-delete-bin-line float-right text-muted"></i></a>
         </div>
         </div>
         </div>`;
@@ -407,4 +411,35 @@ function autoClose(notification) {
     notification.addEventListener('click', function () {
         notification.close();
     }, false)
+}
+//复制信息
+function copy(text){
+    let transfer = document.createElement('input');
+    document.body.appendChild(transfer);
+    transfer.value = text;  // 这里表示想要复制的内容
+    transfer.focus();
+    transfer.select();
+    if (document.execCommand('copy')) {
+        document.execCommand('copy');
+    }
+    transfer.blur();
+    alert('复制成功');
+    document.body.removeChild(transfer);
+}
+//删除信息
+function deletes(id){
+    var uid = $(".chat-user-list .active").data('id');
+    var uname = $(".chat-user-list .active").data('name');
+    $.ajax({
+        url: './getUserdelete',
+        type:'GET',
+        data: {id:id,uid:uid},
+        dataType: 'JSON',
+        success: function (data) {
+            if(data.status == '1'){
+                var _html ='';
+                $("#chatMessage-"+uid).append('');
+            }
+        }
+    });
 }

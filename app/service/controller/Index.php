@@ -46,6 +46,15 @@ class Index extends Base
         $data = $messageObj->getUserSMessage($uid, $sid);
         return replace(config('status.succeed'),'ok',$data,200);
     }
+    public function getUserdelete()
+    {
+        $uid = $this->request->param('uid', '', 'trim');
+        //$uname = $this->request->param('uname', '', 'trim');
+        $id  = $this->request->param('id', '', 'trim');
+        $messageObj = new MessageModel();
+        $data = $messageObj->getUserdelete($uid,$id);
+        return replace(config('status.succeed'),'ok',$data,200);
+    }
 
 
 }
